@@ -1,16 +1,16 @@
 <template>
-  <div class="article">
-    <div class="fixed-section">
-      <div class="background"></div>
-      <div class="overlay"></div>
-      <div class="content">
-        <h1 class="title">회사 소개</h1>
-      </div>
+  <div class="fixed-section">
+    <div class="background"></div>
+    <div class="overlay"></div>
+    <div class="content">
+      <h1 class="title">
+        <slot></slot>
+      </h1>
     </div>
   </div>
+
 </template>
 <script>
-import Parallax from 'vue-parallaxy'
 export default {
   data() {
     return {}
@@ -18,18 +18,13 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.article {
-  padding-top: 60px;
-  padding-bottom: 60px;
-  min-height: 300vh;
-}
 .fixed-section {
   position: relative;
   min-height: 150px;
   overflow: hidden;
 
   .content {
-    position:relative;
+    position: relative;
     color: white;
     line-height: 150px;
     text-align: center;

@@ -1,14 +1,24 @@
 <template>
   <header>
-    <div class="logo">
-      <p>YOUNG CAPITAL</p>
+    <nuxt-link to="/">
+      <div class="logo">
+        <p>YOUNG CAPITAL</p>
+      </div>
+    </nuxt-link>
+    <div class="menu-list">
+      <nuxt-link to="/product">
+        <el-button type="text">대출 상품</el-button>
+      </nuxt-link>
+      <nuxt-link to="/limit">
+        <el-button type="text">대출 한도조회</el-button>
+      </nuxt-link>
+      <nuxt-link to="/service">
+        <el-button type="text">고객 만족 센터</el-button>
+      </nuxt-link>
+      <nuxt-link to="/about">
+        <el-button type="text">회사 소개</el-button>
+      </nuxt-link>
     </div>
-    <ul class="menu-list">
-      <li>대출 상품</li>
-      <li>대출 한도조회</li>
-      <li>고객 만족 센터</li>
-      <li>회사 소개</li>
-    </ul>
     <span class="sidebar-icon">
       <el-button @click="sidebarVisible = true" icon="el-icon-menu" circle type="primary"></el-button>
     </span>
@@ -17,18 +27,22 @@
         <div class="overlay" @click="sidebarVisible=false"></div>
         <transition name="slide">
           <aside class="sidebar" v-show="sidebarVisible">
-            <el-menu>
-              <el-menu-item index="1">
+            <el-menu :router="true">
+              <el-menu-item index="product">
                 <i class="el-icon-menu"></i>
-                <span>가나다</span>
+                <span>대출 상품</span>
               </el-menu-item>
-              <el-menu-item index="2">
+              <el-menu-item index="limit">
                 <i class="el-icon-menu"></i>
-                <span>다나가</span>
+                <span>대출 한도 조회</span>
               </el-menu-item>
-              <el-menu-item index="3">
+              <el-menu-item index="service">
                 <i class="el-icon-menu"></i>
-                <span>다가나</span>
+                <span>고객 만족 센터</span>
+              </el-menu-item>
+              <el-menu-item index="about">
+                <i class="el-icon-menu"></i>
+                <span>회사 소개</span>
               </el-menu-item>
             </el-menu>
           </aside>
@@ -42,9 +56,9 @@ export default {
   data() {
     return {
       sidebarVisible: false
-    };
+    }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 header {
@@ -57,10 +71,14 @@ header {
   justify-content: space-between;
   align-content: center;
   padding-left: 20px;
+  padding-right: 20px;
   box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
 
   .logo > p {
     line-height: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
   }
   .menu-list {
     margin: 0;
@@ -69,9 +87,9 @@ header {
     list-style: none;
     align-items: center;
 
-    li {
-      padding-left: 20px;
-      padding-right: 20px;
+    .el-button {
+      padding-left: 10px;
+      padding-right: 10px;
       line-height: 60px;
     }
   }
@@ -79,8 +97,8 @@ header {
   .sidebar-icon {
     font-size: 22px;
     line-height: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     display: none;
   }
   @media (max-width: 991px) {

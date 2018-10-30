@@ -4,7 +4,7 @@
       <div class="background"></div>
       <div class="overlay"></div>
       <div class="content">
-        <h1 class="title">회사 소개</h1>
+        <h1 class="title">고객 만족 센터</h1>
       </div>
     </div>
   </div>
