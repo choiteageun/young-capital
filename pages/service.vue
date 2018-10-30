@@ -1,20 +1,16 @@
 <template>
   <div class="article">
-    <div class="fixed-section">
-      <div class="background"></div>
-      <div class="overlay"></div>
-      <div class="content">
-        <h1 class="title">고객 만족 센터</h1>
-      </div>
-    </div>
+    <BaseSubHeader>고객 만족 센터</BaseSubHeader>
   </div>
+
 </template>
 <script>
-import Parallax from 'vue-parallaxy'
+import BaseSubHeader from "@/components/Base/BaseSubHeader.vue"
 export default {
   data() {
     return {}
-  }
+  },
+  components:{BaseSubHeader}
 }
 </script>
 <style lang="scss" scoped>
@@ -22,44 +18,5 @@ export default {
   padding-top: 60px;
   padding-bottom: 60px;
   min-height: 300vh;
-}
-.fixed-section {
-  position: relative;
-  min-height: 150px;
-  overflow: hidden;
-
-  .content {
-    position:relative;
-    color: white;
-    line-height: 150px;
-    text-align: center;
-    .title:before,
-    .title:after {
-      content: '-';
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-  }
-  .background {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('/img/main/main_background.jpg');
-    background-size: cover;
-    background-position: 50% 50%;
-    background-attachment: fixed;
-    transform: scale(1.05);
-    filter: blur(5px);
-  }
-  .overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
 }
 </style>
