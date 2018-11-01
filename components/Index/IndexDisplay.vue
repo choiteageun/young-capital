@@ -4,7 +4,7 @@
       <div class="content">
         <el-row :gutter="20">
           <el-col :md="{span: 9, offset: 0}" :sm="{ span: 16, offset:4 }">
-            <div data-aos="fade-right" data-aos-delay="500" class="box consulBox">
+            <div class="box consulBox">
               <h1 class="center">전문가에게 상담신청</h1>
               <el-form ref="consulForm" :model="createUserData" :rules="rules" label-width="80px" @submit.native.prevent="createUser" class="consulForm">
                 <el-form-item label="이름" prop="name">
@@ -27,7 +27,7 @@
             </div>
           </el-col>
           <el-col :md="15">
-            <div data-aos="zoom-in-up" class="box carouselBox">
+            <div class="box carouselBox">
               <el-carousel height="415px" :interval="5000" arrow="always">
                 <el-carousel-item>
                   <h1>개인회생대출!</h1>
@@ -54,6 +54,7 @@
 <script>
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios"
 export default {
   data() {
     return {
