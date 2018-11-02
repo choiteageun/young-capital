@@ -67,6 +67,7 @@ export default {
   }
   .photoContent {
     padding: 20px;
+    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
