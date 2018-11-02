@@ -1,17 +1,20 @@
 <template>
   <div>
     <IndexDisplay></IndexDisplay>
-    <indexSolution></indexSolution>
+    <IndexSolution></IndexSolution>
+    <IndexDecoration></IndexDecoration>
   </div>
 </template>
 <script>
 import IndexDisplay from "@/components/Index/IndexDisplay.vue"
 import IndexSolution from "@/components/Index/IndexSolution.vue"
+import IndexDecoration from "@/components/Index/IndexDecoration.vue"
 
 export default {
   components:{
     IndexDisplay,
     IndexSolution,
+    IndexDecoration,
   },
   data() {
     return {

@@ -12,33 +12,118 @@
             <div data-aos="fade-up" class="sub-box" :style="`background-image: url('/img/main/sub_${box}.jpg');`">
               <div class="overlay"></div>
               <div class="content animated bounceInUp">
-                <h3 class="title">대출 금리</h3>
-                <p class="description">주며, 눈이 튼튼하며, 과실이 하는 스며들어 길을 것이다. 속에서 놀이 같은 칼이다. 날카로우나 귀는 소금이라 너의 봄바람이다. 무엇을 두손을 실현에 것이다. 고행을 속에 하는 가슴에 그들의 인간의 없으면 때문이다. 날카로우나 곳이 싸인 얼마나 가슴이 웅대한 사랑의 모래뿐일 교향악이다. 우는 불러 열락의 그리하였는가? 위하여 것이 뜨고, 수 오아이스도 많이 날카로우나 만천하의 아니다. 아니더면, 우리 청춘 끓는 할지라도 어디 그들에게 얼음 말이다. 방황하여도, 날카로우나 찾아 것이다. 얼마나 무엇을 충분히 것이다.주며, 눈이 튼튼하며, 과실이 하는 스며들어 길을 것이다. 속에서 놀이 같은 칼이다. 날카로우나 귀는 소금이라 너의 봄바람이다. 무엇을 두손을 실현에 것이다. 고행을 속에 하는 가슴에 그들의 인간의 없으면 때문이다. 날카로우나 곳이 싸인 얼마나 가슴이 웅대한 사랑의 모래뿐일 교향악이다. 우는 불러 열락의 그리하였는가? 위하여 것이 뜨고, 수 오아이스도 많이 날카로우나 만천하의 아니다. 아니더면, 우리 청춘 끓는 할지라도 어디 그들에게 얼음 말이다. 방황하여도, 날카로우나 찾아 것이다. 얼마나 무엇을 충분히 것이다.</p>
+                <h3 class="title">{{title[box-1].title}}</h3>
+                <div class="description">
+                  <div class="overScroll">
+                    <p class="sub_contents" style="margin-bottom : 20px;color: #ddd;">{{title[box-1].content.one}}</p>
+                    <p class="sub_contents"><span style="color: #aaa;font-size:0.7rem">대출 대상 : </span>{{title[box-1].content.two}}</p>
+                    <p class="sub_contents"><span style="color: #aaa;">대출 한도 : </span>{{title[box-1].content.three}}</p>
+                    <p class="sub_contents"><span style="color: #aaa;">금리 : </span>{{title[box-1].content.four}}</p>
+                    <p class="sub_contents" style="color: red;">{{title[box-1].content.five}}</p>
+                    <p class="sub_contents"><span style="color: #aaa;">상환 방식 : </span>{{title[box-1].content.six}}</p>
+                  </div>
+                  <div style="text-align: center; margin-top: 20px;">
+                    <el-button type="success">{{title[box-1].title}} 신청하러 가기</el-button>
+                  </div>
+                </div>
               </div>
             </div>
           </el-col>
-
         </el-row>
       </div>
     </section>
   </div>
 </template>
 <script>
-import AOS from "aos"
-import "aos/dist/aos.css"
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default {
   data() {
-    return {};
+    return {
+      title: [
+        {
+          title: '프리랜서 대출',
+          content: {
+            one:
+              '생활비나 학원비로 자금이 필요한 취업준비중인 고객 및 청년을 위한 맞춤상품',
+            two: '만 19세~35세',
+            three: '~ 2500만원 (무소득자 제외)',
+            four: '연 ~ 24% 이내',
+            five: '(연체금리 : 대출금리의 최대 24%넘지않음)',
+            six: '만기일시상환 및 원리금균등상환'
+          }
+        },
+        {
+          title: '재학생 및 유학생 대출',
+          content: {
+            one:
+              '학업을 하면서 식비,생활비,교통비,학원비 등..생활자금이 필요한 경우에는 대학생대출!',
+            two:
+              '만19 ~ 만35세 전국 대학교 재,휴학생, 학점은행제 사이버대 기능대 가능',
+            three: '~ 2500만원(무소득자 제외)',
+            four: '연 ~ 24% 이내',
+            five: '(연체금리 : 대출금리의 최대 24%넘지않음)',
+            six: '만기일시상환 및 원리금균등상환'
+          }
+        },
+        {
+          title: '직장인 대출',
+          content: {
+            one:
+              '소득활동을 하면서 생활자금,병원비,각종공과금 납부 등 급하게 자금이 필요한 고객을 위한 상품',
+            two: '만19 ~ 만60세 1개월이상 재직중인 직장인(현금수령 가능)',
+            three: '~ 2500만원(무소득자 제외)',
+            four: '연 ~ 24% 이내',
+            five: '(연체금리 :대출금리의 최대 24%넘지않음)',
+            six: '만기일시상환 및 원리금균등상환'
+          }
+        },
+        {
+          title: '사업자 대출',
+          content: {
+            one:
+              '일정치 않은 소득 때문에 급하게 가게운영자금이나 생계자금이 필요하실때는 사업자대출',
+            two: '만 20~만60세 자영업 운영 3개월이상자',
+            three: '~ 2500만원(무소득자 제외)',
+            four: '연 ~ 24% 이내',
+            five: '(연체금리 :대출금리의 최대 24%넘지않음)',
+            six: '만기일시상환 및 원리금균등상환'
+          }
+        },
+        {
+          title: '전월세 대출',
+          content: {
+            one:
+              '대출도 많고 등급도 안좋고 대출이 될까?내이름으로 된 전세,월세가 있다면 집주인 동의없이 가능',
+            two:
+              '만 20세이상 전세,(단,군미필 불가)임대잔존기간 6개월이상 임대차 보증금 1000만원 이상',
+            three: '~ 2500만원(무소득자 제외)',
+            four: '연 ~ 24% 이내',
+            five: '(연체금리 :대출금리의 최대 24%넘지않음)',
+            six: '만기일시상환 및 원리금균등상환'
+          }
+        },
+        {
+          title: '신용회복 및 회생 대출',
+          content: {
+            one:
+              '회생 신청후 최저생계비로 생활하려고 하니 빠듯하시죠~회생 중 생활비가 필요하실때 추천',
+            two: '만 20세 ~ 만55세 개인회생(사건번호만 나와도 가능)',
+            three: '~ 2500만원(무소득자 제외)',
+            four: '연 ~ 24% 이내',
+            five: '(연체금리 :대출금리의 최대 24%넘지않음)',
+            six: '만기일시상환 및 원리금균등상환'
+          }
+        }
+      ]
+    }
   },
-  methods: {
-
-  },
-  mounted(){
+  methods: {},
+  mounted() {
     AOS.init()
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .solution {
@@ -76,8 +161,8 @@ export default {
     text-align: center;
     color: #aaa;
     margin-bottom: 20px;
-    margin-left:15px;
-    margin-right:15px;
+    margin-left: 15px;
+    margin-right: 15px;
     opacity: 0.8;
     letter-spacing: -0.05em;
     line-height: 1.3;
@@ -124,16 +209,21 @@ export default {
     .description {
       padding-left: 30px;
       padding-right: 30px;
-      height: 200px;
-      overflow-y: auto;
+      // overflow-y: auto;
+      .overScroll {
+        height: 150px;
+        overflow-y: auto;
+      }
+    }
+    .sub_contents {
+      margin-bottom: 5px;
       font-size: 0.8rem;
     }
   }
 
-  
   &:hover {
     box-shadow: 0px 10px 30px -2px rgba(0, 0, 0, 0.9),
-    0px 10px 15px -3px rgba(0,0,0,0.9);
+      0px 10px 15px -3px rgba(0, 0, 0, 0.9);
     .content {
       height: 100%;
     }
