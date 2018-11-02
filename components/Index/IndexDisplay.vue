@@ -91,7 +91,7 @@ export default {
         agree: [
           {
             type: "string",
-            message: "개인정보를 동의해주세요.",
+            message: "개인정보 취급방침을 동의해주세요.",
             trigger: "change"
           }
         ]
@@ -161,9 +161,11 @@ export default {
       padding: 20px;
     }
     .el-col > .carouselBox {
-      background-color: rgba(0, 0, 0, 0.5);
+      // background-color: rgba(0, 0, 0, 0.5);
       padding: 20px;
       h1 {
+        color:sienna;
+        text-shadow: rgba(0, 0, 0, 1) 1px 1px 1px;
         text-align: center;
         font-size: 3rem;
         font-weight: 400;

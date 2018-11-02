@@ -2,7 +2,7 @@
   <div style="margin-bottom : 40px;">
     <div class="backgroundImg">
       <div style="background-color: rgba(255,255,255,0.5);"></div>
-      <div>가</div>
+      <div></div>
     </div>
   </div>
 </template>

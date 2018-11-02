@@ -2,7 +2,7 @@
   <header>
     <nuxt-link to="/">
       <div class="logo">
-        <p>YOUNG CAPITAL</p>
+        <p><span>NO_1</span> <span style="font-size: 0.8rem;">CAPITAL</span></p>
       </div>
     </nuxt-link>
     <div class="menu-list">
@@ -118,7 +118,6 @@ header {
   height: 100%;
   left: 0;
   top: 0;
-
   @media (min-width: 992px) {
     display: none;
   }

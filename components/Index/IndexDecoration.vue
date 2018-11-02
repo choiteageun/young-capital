@@ -72,13 +72,17 @@ export default {
       inset 0px 0px 30px 0px #fff, inset 0px 0px 30px 0px #fff,
       inset 0px 0px 30px 0px #fff;
   }
-  .expContent {
-    padding: 20px;
-    border-left: 3px solid #715d60;
-    height: 200px;
-  }
-  .decoTitle {
-    font-size: 2.5rem;
+  .decoConBox {
+    box-sizing: border-box;
+    overflow: hidden;
+    .expContent {
+      padding: 20px;
+      border-left: 3px solid #715d60;
+      height: 200px;
+    }
+    .decoTitle {
+      font-size: 2.5rem;
+    }
   }
   .reverseFlex {
     @media (max-width: 767px) {

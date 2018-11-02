@@ -9,8 +9,9 @@
 <script>
 import IndexDisplay from "@/components/Index/IndexDisplay.vue"
 import IndexSolution from "@/components/Index/IndexSolution.vue"
-import IndexDecoration from "@/components/Index/IndexDecoration.vue"
 import IndexInformation from "@/components/Index/IndexInformation.vue"
+import IndexDecoration from "@/components/Index/IndexDecoration.vue"
+
 
 export default {
   components:{
