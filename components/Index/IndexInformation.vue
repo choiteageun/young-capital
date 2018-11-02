@@ -1,0 +1,29 @@
+<template>
+  <div style="margin-bottom : 40px;">
+    <div class="backgroundImg">
+      <div style="background-color: rgba(255,255,255,0.5);"></div>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  data(){
+    return{
+
+    }
+  },
+  methods:{
+
+  }
+}
+</script>
+<style lang="scss" scoped>
+.backgroundImg{
+  background-image: url("/img/main/information_line.jpg");
+  width: 100%;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+</style>

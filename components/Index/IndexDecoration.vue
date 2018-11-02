@@ -23,12 +23,12 @@
                 <p class="">있음으로써 가치를 그들의 피고 품고 바이며, 것이다. 소금이라 이성은 영원히 굳세게 듣기만 사막이다. 속에 힘차게 그들은 아니한 것이다.보라, 아니더면, 아니다. 우리 이 대고, 이상은 풍부하게 피가 관현악이며, 이것이다.</p>
               </div>
             </el-col>
-            <el-col data-aos="fade-left" data-aos-duration="1500"  :sm="10" :xs="24" class="decorationContents photoContent" :style="`background-image: url('/img/main/decoration_2.jpg');`">
+            <el-col data-aos="fade-left" data-aos-duration="1500" :sm="10" :xs="24" class="decorationContents photoContent" :style="`background-image: url('/img/main/decoration_2.jpg');`">
             </el-col>
           </el-row>
           <el-row class="decoConBox">
             <!-- <el-col :sm="10" class="decorationContents leftContent" :style="`background-image: url('/img/main/decoration_${box}.jpg');`"></el-col> -->
-            <el-col data-aos="fade-right" data-aos-duration="1500"  :sm="10" :xs="24" class="decorationContents photoContent" :style="`background-image: url('/img/main/decoration_3.jpg');`"></el-col>
+            <el-col data-aos="fade-right" data-aos-duration="1500" :sm="10" :xs="24" class="decorationContents photoContent" :style="`background-image: url('/img/main/decoration_3.jpg');`"></el-col>
             <el-col data-aos="fade-down" :sm="14" :xs="24" class="decorationContents expContent right">
               <div class="">
                 <h4>1:1 맞춤 컨설팅</h4>
@@ -51,10 +51,8 @@ export default {
   data() {
     return {}
   },
-  methods: {
-
-  },
-  mounted(){
+  methods: {},
+  mounted() {
     AOS.init()
   }
 }
@@ -67,7 +65,6 @@ export default {
   }
   .photoContent {
     padding: 20px;
-    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
@@ -83,9 +80,11 @@ export default {
   .decoTitle {
     font-size: 2.5rem;
   }
-  .reverseFlex{
-    // display: flex;
-    // flex-direction: column-reverse;
+  .reverseFlex {
+    @media (max-width: 767px) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
   }
 }
 </style>
