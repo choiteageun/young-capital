@@ -43,7 +43,7 @@ export default {
     bottom: 0;
     background-image: url('/img/main/main_background.jpg');
     background-size: cover;
-    background-position: 50% 50%;
+    background-position: 50% -250px;
     background-attachment: fixed;
     transform: scale(1.05);
     filter: blur(5px);

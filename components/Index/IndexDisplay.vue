@@ -172,6 +172,7 @@ export default {
       }
       h3 {
         font-weight: 200;
+        text-shadow: rgba(0, 0, 0, 1) 1px 1px 1px;
         opacity: 0.8;
       }
     }

@@ -3,7 +3,7 @@
     <section class="solution">
       <div class="skew"></div>
       <div class="container smallAbout">
-        <h1>YOUNG CAPITAL SOLUTION</h1>
+        <h1><span style="text-shadow: rgba(255, 255, 255, 1) 1px 1px 2px,rgba(0, 0, 0, 0.5) 1px 1px 15px;">NUMBER_ONE CAPITAL SOLUTION</span></h1>
         <div class="explanationSpan">
           <span>공자는 싶이 청춘이 영원히 운다. 보는 이것이야말로 아니더면, 청춘을 그와 그들의 청춘의 품었기 미묘한 그리하였는가?</span>
         </div>
