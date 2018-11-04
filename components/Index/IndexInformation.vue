@@ -33,12 +33,12 @@ export default {
     0px 10px 10px 0px rgba(0, 0, 0, 0.4);
   background-attachment: fixed;
 }
-.el-step{
-  & /deep/ .el-step__main .is-process{
-    color:white;
+.el-step {
+  & /deep/ .el-step__main .is-process {
+    color: white;
   }
-  & /deep/ .el-step__line-inner{
-    color:white;
+  & /deep/ .el-step__line-inner {
+    color: white;
   }
 }
 </style>

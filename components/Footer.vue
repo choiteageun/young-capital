@@ -83,7 +83,7 @@ export default {
   p {
     font-size: 14px;
     color: #ccc;
-    line-height: 50px;
+    line-height: 400px;
     text-align: center;
     cursor: pointer;
     span {
