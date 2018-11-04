@@ -10,7 +10,7 @@
               <span style="font-size:0.8rem;">{{community[box-1].exp}}</span>
               <h1 style="text-align:center;color:#715d60;">{{community[box-1].title}}</h1>
               <div style="text-align:center;">
-                <img style="width:100px;height:40px;" :src="`/img/main/support_${box}.png`">
+                <img style="width:100px;height:40px;opacity:.9;border-radius:10px;" :src="`/img/main/support_${box}.png`">
               </div>
               <div style="text-align:right;">
                 <el-button type="primary">바로가기</el-button>
