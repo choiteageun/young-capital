@@ -4,6 +4,7 @@
     <IndexSolution></IndexSolution>
     <IndexInformation></IndexInformation>
     <IndexDecoration></IndexDecoration>
+    <IndexCommunity></IndexCommunity>
   </div>
 </template>
 <script>
@@ -11,6 +12,7 @@ import IndexDisplay from "@/components/Index/IndexDisplay.vue"
 import IndexSolution from "@/components/Index/IndexSolution.vue"
 import IndexInformation from "@/components/Index/IndexInformation.vue"
 import IndexDecoration from "@/components/Index/IndexDecoration.vue"
+import IndexCommunity from "@/components/Index/IndexCommunity.vue"
 
 
 export default {
@@ -19,6 +21,7 @@ export default {
     IndexSolution,
     IndexDecoration,
     IndexInformation,
+    IndexCommunity,
   },
   data() {
     return {
