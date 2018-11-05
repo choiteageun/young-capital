@@ -69,7 +69,7 @@
           </el-col>
           <el-col class="footerContent" :md="6" :sm="12">
             <div class="contents">
-              <h1 class="footerTitle">MESSENGER</h1>
+              <h1 class="footerTitle">COMMUNITY</h1>
               <div class="content ">
 
               </div>
