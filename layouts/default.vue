@@ -10,7 +10,7 @@
 
 </template>
 <script>
-import Chat from '@/components/Chat/Chat.vue'
+// import Chat from '@/components/Chat/Chat.vue'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 
@@ -22,7 +22,7 @@ export default {
   },
 
   components: {
-    Chat,
+    // Chat,
     Header,
     Footer
   }
