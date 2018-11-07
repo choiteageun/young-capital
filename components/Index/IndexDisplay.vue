@@ -21,6 +21,7 @@
                 </el-form-item>
                 <el-form-item label="동의" prop="agree">
                   <el-checkbox v-model="createUserData.agree" true-label="true" :false-label="0" type="success" label="개인정보 취급방침"></el-checkbox>
+                  <span class="terms">약관보기</span>
                 </el-form-item>
                 <el-button style="width:100%; margin-top:10px;" type="success" native-type="submit">상담신청</el-button>
               </el-form>
@@ -175,6 +176,20 @@ export default {
       box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.3) inset;
 
       padding: 20px;
+      .terms {
+        margin-left: 30px;
+        padding: 2px 10px;
+        border: 1px solid white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition:background-color .2s;
+        font-weight: 500;
+      }
+      .terms:hover {
+        background-color: white;
+        font-weight: 600;
+        color: #715d60;
+      }
     }
     .el-col > .carouselBox {
       // background-color: rgba(0, 0, 0, 0.5);
@@ -185,15 +200,14 @@ export default {
       & /deep/ .el-carousel__indicators {
         display: none;
       }
-      .carouselIcon{
-        
-        .smileIcon{
-          color:black;
+      .carouselIcon {
+        .smileIcon {
+          color: black;
           font-size: 4rem;
           line-height: 4rem;
           margin-left: 50px;
-          margin-top:30px;
-          opacity: .8;
+          margin-top: 30px;
+          opacity: 0.8;
         }
       }
       h1 {

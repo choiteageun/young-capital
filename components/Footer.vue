@@ -15,20 +15,20 @@
                 </p>
                 <p class="abo_twoLine">
                   <el-row>
-                    <el-col span="6"><i class="icon fas fa-phone"></i></el-col>
+                    <el-col span="6"><i class="icon far fa-clipboard"></i></el-col>
                     <el-col span="18"><span>123-45-678910</span></el-col>
                   </el-row>
                 </p>
                 <p class="abo_threeLine">
                   <el-row>
-                    <el-col span="6"><i class="icon far fa-clipboard"></i></el-col>
+                    <el-col span="6"><i class="icon fas fa-phone"></i></el-col>
                     <el-col span="18"><span>070 7049 0620 </span></el-col>
                   </el-row>
                 </p>
                 <p class="abo_fourLine">
                   <el-row>
                     <el-col span="6"><i class="icon fas fa-at"></i></el-col>
-                    <el-col span="18"><span>infomation@naver.com</span></el-col>
+                    <el-col span="18"><span>information@naver.com</span></el-col>
                   </el-row>
                 </p>
                 <p class="abo_fiveLine">
@@ -48,7 +48,7 @@
           </el-col>
           <el-col class="footerContent" :md="6" :sm="12">
             <div class="contents">
-              <h1 class="footerTitle">INTRO</h1>
+              <h1 class="footerTitle">INTRODUCE</h1>
               <div class="content introduce">
                 <div>
                   <img class="footerIntroImg" src="img/main/footer_1.jpg" />
@@ -61,15 +61,40 @@
           </el-col>
           <el-col class="footerContent" :md="6" :sm="12">
             <div class="contents">
-              <h1 class="footerTitle">COMPANY</h1>
-              <div class="content ">
-                
+              <h1 class="footerTitle">COMPANY POLICY</h1>
+              <div class="content companyContent">
+                <div>
+                  <p>개인정보 취급 방침</p>
+                </div>
+                <div>
+                  <p>이용약관</p>
+                </div>
+                <div>
+                  <p>책임한계 및 법적고지</p>
+                </div>
+                <div>
+                  <p>SMS 및 메일링 서비스약관</p>
+                </div>
+                <div>
+                  <p>인재채용</p>
+                </div>
               </div>
             </div>
           </el-col>
           <el-col class="footerContent" :md="6" :sm="12">
             <div class="contents">
               <h1 class="footerTitle">COMMUNITY</h1>
+              <div class="communityContent">
+                <div class="kakaoCon iconBox">
+                  <img src="img/main/naver.png">
+                </div>
+                <div class="naverCon iconBox">
+                  <img src="img/main/kakaotalkIcon.png">
+                </div>
+                <div class="bandCon iconBox">
+                  <img src="img/main/band.jpg">
+                </div>
+              </div>
               <div class="content ">
 
               </div>
@@ -199,9 +224,29 @@ export default {
           box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.5);
         }
         .footerIntroText {
-          text-shadow: rgba(0, 0, 0, 1) 1px 1px 2px,rgba(255, 255, 255, 0.5) 1px 1px 15px;
+          text-shadow: rgba(0, 0, 0, 1) 1px 1px 2px,
+            rgba(255, 255, 255, 0.5) 1px 1px 15px;
           margin-top: 40px;
           line-height: 20px;
+        }
+      }
+      .companyContent {
+        padding-top: 20px;
+        padding-left: 40px;
+        p {
+          font-size: 0.9rem;
+          line-height: 50px;
+        }
+      }
+      .communityContent {
+        padding-top: 50px;
+        padding-left:50px;
+        .iconBox {
+          line-height:50px;
+          img {
+            width: 30px;
+            height: 30px;
+          }
         }
       }
     }
