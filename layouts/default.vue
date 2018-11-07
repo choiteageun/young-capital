@@ -5,7 +5,7 @@
       <nuxt />
     </div>
     <Footer />
-    <Chat v-if="$store.state.logged" />
+    <!-- <Chat v-if="$store.state.logged" /> -->
   </div>
 
 </template>

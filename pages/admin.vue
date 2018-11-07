@@ -27,8 +27,6 @@ import Customer from "@/components/Admin/Customer.vue";
 import Notice from "@/components/Admin/Notice.vue";
 import Staff from "@/components/Admin/Staff.vue";
 
-import socket from "@/plugins/socket.io.js"
-
 export default {
   data() {
     return {
