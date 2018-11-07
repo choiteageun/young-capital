@@ -9,38 +9,38 @@
               <div class="content companyInfo">
                 <p class="abo_oneLine">
                   <el-row>
-                    <el-col span="6"><i class="icon far fa-building"></i></el-col>
-                    <el-col span="18"><span>넘버원 대부중개</span></el-col>
+                    <el-col :span="6"><i class="icon far fa-building"></i></el-col>
+                    <el-col :span="18"><span>넘버원 대부중개</span></el-col>
                   </el-row>
                 </p>
                 <p class="abo_twoLine">
                   <el-row>
-                    <el-col span="6"><i class="icon far fa-clipboard"></i></el-col>
-                    <el-col span="18"><span>123-45-678910</span></el-col>
+                    <el-col :span="6"><i class="icon far fa-clipboard"></i></el-col>
+                    <el-col :span="18"><span>123-45-678910</span></el-col>
                   </el-row>
                 </p>
                 <p class="abo_threeLine">
                   <el-row>
-                    <el-col span="6"><i class="icon fas fa-phone"></i></el-col>
-                    <el-col span="18"><span>070 7049 0620 </span></el-col>
+                    <el-col :span="6"><i class="icon fas fa-phone"></i></el-col>
+                    <el-col :span="18"><span>070 7049 0620 </span></el-col>
                   </el-row>
                 </p>
                 <p class="abo_fourLine">
                   <el-row>
-                    <el-col span="6"><i class="icon fas fa-at"></i></el-col>
-                    <el-col span="18"><span>information@naver.com</span></el-col>
+                    <el-col :span="6"><i class="icon fas fa-at"></i></el-col>
+                    <el-col :span="18"><span>information@naver.com</span></el-col>
                   </el-row>
                 </p>
                 <p class="abo_fiveLine">
                   <el-row>
-                    <el-col span="6"><i class="icon fas fa-map-marked-alt"></i></el-col>
-                    <el-col span="18"><span>서울특별시 강북구 한천로124가길 53, 103호</span></el-col>
+                    <el-col :span="6"><i class="icon fas fa-map-marked-alt"></i></el-col>
+                    <el-col :span="18"><span>서울특별시 강북구 한천로124가길 53, 103호</span></el-col>
                   </el-row>
                 </p>
                 <p class="abo_sixLine">
                   <el-row>
-                    <el-col span="6"><i class="icon far fa-user"></i></el-col>
-                    <el-col span="18"><span>김민주</span></el-col>
+                    <el-col :span="6"><i class="icon far fa-user"></i></el-col>
+                    <el-col :span="18"><span>김민주</span></el-col>
                   </el-row>
                 </p>
               </div>

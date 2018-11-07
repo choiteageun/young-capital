@@ -104,7 +104,7 @@ header {
     padding-right: 10px;
     display: none;
   }
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     .menu-list {
       display: none;
     }
