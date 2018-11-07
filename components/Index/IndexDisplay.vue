@@ -4,30 +4,30 @@
       <div class="content">
         <el-row :gutter="20">
           <el-col :md="{span: 9, offset: 0}" :sm="{ span: 16, offset:4 }">
-            <no-ssr>
-              <div class="box consulBox" data-aos="fade-up">
-                <h1 class="center">전문가에게 상담신청</h1>
-                <el-form ref="consulForm" :model="createUserData" :rules="rules" label-width="80px" @submit.native.prevent="createUser" class="consulForm">
-                  <el-form-item label="이름" prop="name">
-                    <el-input v-model="createUserData.name"></el-input>
-                  </el-form-item>
-                  <el-form-item label="연락처" prop="tel">
-                    <el-input v-model="createUserData.tel"></el-input>
-                  </el-form-item>
-                  <el-form-item label="대출금액" prop="loanAmount">
-                    <el-input v-model="createUserData.loanAmount"></el-input>
-                  </el-form-item>
-                  <el-form-item label="문의내용" prop="note">
-                    <el-input v-model="createUserData.note" type="textarea"></el-input>
-                  </el-form-item>
-                  <el-form-item label="동의" prop="agree">
-                    <el-checkbox v-model="createUserData.agree" true-label="true" :false-label="0" type="success" label="개인정보 취급방침"></el-checkbox>
-                    <div @click="termDialog=true;" class="terms"><span>약관보기</span></div>
-                  </el-form-item>
-                  <el-button style="width:100%; margin-top:10px;" type="success" native-type="submit">상담신청</el-button>
-                </el-form>
-              </div>
-            </no-ssr>
+            <!-- <on-ssr> -->
+            <div class="box consulBox">
+              <h1 class="center">전문가에게 상담신청</h1>
+              <el-form ref="consulForm" :model="createUserData" :rules="rules" label-width="80px" @submit.native.prevent="createUser" class="consulForm">
+                <el-form-item label="이름" prop="name">
+                  <el-input v-model="createUserData.name"></el-input>
+                </el-form-item>
+                <el-form-item label="연락처" prop="tel">
+                  <el-input v-model="createUserData.tel"></el-input>
+                </el-form-item>
+                <el-form-item label="대출금액" prop="loanAmount">
+                  <el-input v-model="createUserData.loanAmount"></el-input>
+                </el-form-item>
+                <el-form-item label="문의내용" prop="note">
+                  <el-input v-model="createUserData.note" type="textarea"></el-input>
+                </el-form-item>
+                <el-form-item label="동의" prop="agree">
+                  <el-checkbox v-model="createUserData.agree" true-label="true" :false-label="0" type="success" label="개인정보 취급방침"></el-checkbox>
+                  <div @click="termDialog=true;" class="terms"><span>약관보기</span></div>
+                </el-form-item>
+                <el-button style="width:100%; margin-top:10px;" type="success" native-type="submit">상담신청</el-button>
+              </el-form>
+            </div>
+            <!-- </no-ssr> -->
 
             <el-dialog title="개인정보 취급 방침" width="80%" :visible.sync="termDialog">
               <p>㈜넘버원대부중개 주식회사 개인정보 취급방침</p>
