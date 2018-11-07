@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <nuxt-link to="/">
       <div class="logo">
-        <p>넘버원 대부중개</p>
+        <p class="logoTitle">넘버원 대부중개</p>
       </div>
     </nuxt-link>
     <div class="menu-list">
@@ -80,6 +80,8 @@ header {
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
+    text-shadow:rgba(255,255,255,1) 1px 1px 2px,
+    rgba(0,0,0,1) 1px 1px 10px;
   }
   .menu-list {
     margin: 0;
