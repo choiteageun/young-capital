@@ -1,7 +1,10 @@
 <template>
   <div>
     <div>
-      <h1 class="titleFont">재학생 및 무직자 대출 <span>생활비나 학원비로 자금이 필요한 취업준비중인 고객 및 청년을 위한 맞춤상품</span></h1>
+      <el-row>
+        <el-col :span="8"><h1 class="titleFont">재학생/무직자 대출 </h1></el-col>
+        <el-col :span="16"><span>생활비나 학원비로 자금이 필요한 취업준비중인 고객 및 청년을 위한 맞춤상품</span></el-col>
+      </el-row>
     </div>
   </div>
 </template>

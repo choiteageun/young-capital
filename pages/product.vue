@@ -8,7 +8,7 @@
           <el-button @click="tab = 'freelancer'" :type="(tab === 'freelancer') ? 'warning' : 'primary'">프리랜서 대출</el-button>
           <el-button @click="tab = 'job'" :type="(tab === 'job') ? 'warning' : 'primary'">직장인 대출</el-button>
           <el-button @click="tab = 'buisness'" :type="(tab === 'buisness' ? 'warning' : 'primary')">사업자 대출</el-button>
-          <el-button @click="tab = 'student'" :type="(tab === 'student' ? 'warning' : 'primary')">대학생/무직자 대출</el-button>
+          <el-button @click="tab = 'student'" :type="(tab === 'student' ? 'warning' : 'primary')">재학생/무직자 대출</el-button>
           <el-button @click="tab = 'reconstruction'" :type="(tab === 'reconstruction' ? 'warning' : 'primary')">회생 대출</el-button>
           <el-button @click="tab = 'car'" :type="(tab === 'car' ? 'warning' : 'primary')">무입고 자동차 대출</el-button>
           <el-button @click="tab = 'guarantee'" :type="(tab === 'guarantee' ? 'warning' : 'primary')">보증인 대출</el-button>
@@ -17,7 +17,7 @@
           <el-button @click="tab = 'evidence'" :type="(tab === 'evidence' ? 'warning' : 'primary')">무설정 담보 대출</el-button>
         </div>
       </div>
-      <div>
+      <div class="content">
         <ProductFreelancer v-if="tab === 'freelancer'"></ProductFreelancer>
         <ProductJob v-else-if="tab === 'job'"></ProductJob>
         <ProductBuisness v-else-if="tab === 'buisness'"></ProductBuisness>
@@ -94,6 +94,9 @@ export default {
     }
     @media (max-width: 767px) {
       flex-direction: column;
+    }
+    .content{
+      width:100%;
     }
   }
 }
