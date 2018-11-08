@@ -23,7 +23,9 @@
                     <p class="sub_contents"><span style="color: #aaa;">상환 방식 : </span>{{title[box-1].content.six}}</p>
                   </div>
                   <div style="text-align: center; margin-top: 20px;">
-                    <el-button type="success">{{title[box-1].title}} 신청하러 가기</el-button>
+                    <nuxt-link to="product">
+                      <el-button type="success">{{title[box-1].title}} 신청하러 가기</el-button>
+                    </nuxt-link>
                   </div>
                 </div>
               </div>

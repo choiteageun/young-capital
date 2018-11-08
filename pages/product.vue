@@ -78,7 +78,6 @@ export default {
     display: flex;
     .flex {
       display: flex;
-      height: 100%;
       flex-direction: column;
       @media (max-width: 767px) {
         flex-direction: row;

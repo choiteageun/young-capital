@@ -13,7 +13,7 @@
                 <img style="width:100px;height:40px;opacity:.9;border-radius:10px;" :src="`/img/main/support_${box}.png`">
               </div>
               <div style="text-align:right;">
-                <el-button type="primary">바로가기</el-button>
+                <a :href="`${link[box-1].url}`"><el-button type="primary">바로가기</el-button></a>
               </div>
             </div>
           </el-col>
@@ -30,6 +30,14 @@ import 'aos/dist/aos.css'
 export default {
   data() {
     return {
+      link:[
+        {url:"http://www.minwon.go.kr/main?a=AA020InfoMainApp"},
+        {url:"http://www.minwon.go.kr/main?a=AA020InfoCappViewApp&HighCtgCD=A04001&CappBizCD=13410000020"},
+        {url:"https://www.mma.go.kr/index.do"},
+        {url:"http://www.certpia.com/main.asp"},
+        {url:"http://www.nhis.or.kr/retrieveHomeMain.xx"},
+        {url:"http://www.clfa.or.kr/page/popup_fcsc.asp"}
+      ],
       community: [
         {
           exp: '# 초본발급',
@@ -96,8 +104,8 @@ export default {
       margin: 10px 20px;
       border-right: 1px solid #ccc;
       border-bottom: 1px solid #ccc;
-      box-shadow: 2px 2px 20px -10px rgba(0,0,0,0.5),
-      2px 2px 3px -4px rgba(0,0,0,0.8);
+      box-shadow: 2px 2px 20px -10px rgba(0, 0, 0, 0.5),
+        2px 2px 3px -4px rgba(0, 0, 0, 0.8);
       padding: 20px;
       cursor: pointer;
       @media (max-width: 767px) {
