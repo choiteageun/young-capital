@@ -29,7 +29,7 @@
         <el-col class="firstText" :sm="4">
           <h3>금리</h3>
         </el-col>
-        <el-col class="secondText" :sm="20"><span>	연 ~ 24% 이내(연체금리 :대출금리의 최대 24%넘지않음)</span></el-col>
+        <el-col class="secondText" :sm="20"><span> 연 ~ 24% 이내(연체금리 :대출금리의 최대 24%넘지않음)</span></el-col>
       </el-row>
       <el-row>
         <el-col class="firstText" :sm="4">
@@ -41,7 +41,7 @@
         <el-col class="firstText" :sm="4">
           <h3>구비 서류</h3>
         </el-col>
-        <el-col class="secondText" :sm="20"><span>주민등록증사본,주민등록초본(최근1주일이내),통장사본,<br/>최종학력증명서,주거래통장 3개월 입출금거래내역</span></el-col>
+        <el-col class="secondText" :sm="20"><span>주민등록증사본,주민등록초본(최근1주일이내),통장사본,<br />최종학력증명서,주거래통장 3개월 입출금거래내역</span></el-col>
       </el-row>
       <el-row>
         <el-col class="firstText" :sm="4">
@@ -55,7 +55,38 @@
         </el-col>
         <el-col class="secondText" :sm="20"><span>24시간 / 365일 가능</span></el-col>
       </el-row>
+      <el-row>
+        <el-col style="margin-top:10px;">
+          <h4>※중요:모든 서류에는 주민번호 뒷자리가 않보이게 첨부(예:123456-1******)</h4>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :sm="6">
+          <el-input style="padding-right:10px;">
+            <template slot="prepend">이름</template>
+          </el-input>
+        </el-col>
+        <el-col :sm="10">
+          <el-input>
+            <template slot="prepend">연락처</template>
+          </el-input>
+        </el-col>
+        <el-col :sm="8" style="padding-left:10px;">
+          <el-input>
+            <template slot="prepend">신청금액</template>
+            <template slot="append">만원</template>
+          </el-input>
+        </el-col>
+      </el-row>
+      <el-row>
+        <div style="text-align:center;">
+          <el-col>
+            <el-button style="width:100%;" type="success">신청하기</el-button>
+          </el-col>
+        </div>
+      </el-row>
     </div>
+
   </div>
 </template>
 <script>
@@ -68,13 +99,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 .productContainer {
+  width: 100%;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 
   padding-top: 70px;
-  padding-left: 20px;
-  padding-right: 20px;
+  .el-row > div {
+    margin-bottom: 15px;
+  }
   .el-row {
     height: 30px;
     border-radius: 5px;
@@ -106,9 +139,8 @@ export default {
       line-height: 30px;
       background-color: #eee;
       border-radius: 5px;
-      margin-bottom:15px;
-      padding : 0px 30px;
-      span{
+      padding: 0px 30px;
+      span {
         text-shadow: rgba(0, 0, 0, 0.2) 1px 1px 2px;
       }
     }
