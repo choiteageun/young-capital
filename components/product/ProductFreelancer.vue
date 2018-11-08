@@ -62,7 +62,7 @@
       </el-row>
       <el-row>
         <el-col :sm="6">
-          <el-input style="padding-right:10px;">
+          <el-input class="nameInput">
             <template slot="prepend">이름</template>
           </el-input>
         </el-col>
@@ -71,16 +71,19 @@
             <template slot="prepend">연락처</template>
           </el-input>
         </el-col>
-        <el-col :sm="8" style="padding-left:10px;">
-          <el-input>
+        <el-col :sm="8">
+          <el-input class="loanInput">
             <template slot="prepend">신청금액</template>
             <template slot="append">만원</template>
           </el-input>
         </el-col>
       </el-row>
       <el-row>
-        <div style="text-align:center;">
-          <el-col>
+        <div style="text-align:right;margin-bottom:15px;margin-top:5px;">
+          <el-col :span="12">
+            <el-button style="width:100%;">동의 란 작업할 공간</el-button>
+          </el-col>
+          <el-col :span="12">
             <el-button style="width:100%;" type="success">신청하기</el-button>
           </el-col>
         </div>
@@ -105,18 +108,23 @@ export default {
   margin-right: auto;
 
   padding-top: 70px;
+
   .el-row > div {
     margin-bottom: 15px;
+    @media (max-width: 767px) {
+      margin-bottom: 0;
+    }
   }
   .el-row {
     height: 30px;
     border-radius: 5px;
     .Title h1 {
+      margin-left:10px;
       text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 3px,
         rgba(0, 0, 0, 0.4) 2px 2px 8px;
     }
     .explanation {
-      padding-left: 10px;
+      padding-left: 20px;
       span {
         font-size: 1rem;
         color: rgba(220, 220, 220, 1);
@@ -142,6 +150,21 @@ export default {
       padding: 0px 30px;
       span {
         text-shadow: rgba(0, 0, 0, 0.2) 1px 1px 2px;
+      }
+      @media (max-width: 767px) {
+        margin-bottom: 15px;
+      }
+    }
+    .nameInput {
+      padding-right: 10px;
+      @media (max-width: 767px) {
+        padding-right: 0px;
+      }
+    }
+    .loanInput {
+      padding-left: 10px;
+      @media (max-width: 767px) {
+        padding-left: 0px;
       }
     }
   }
