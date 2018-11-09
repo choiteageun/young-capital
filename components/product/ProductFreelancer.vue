@@ -62,7 +62,7 @@
       </el-row>
     </div>
     <div class="formContainer">
-      <el-form :model="createUserData" label-width="80px" @submit.native.prevent="createUser">
+      <el-form ref="consulForm" :rules="rules" :model="createUserData" label-width="80px" @submit.native.prevent="createUser">
         <el-row>
           <el-col :sm="7">
             <el-form-item label="이름" prop="name">
@@ -93,7 +93,7 @@
               </el-col>
               <el-col :sm="8">
                 <div style="text-align:right;">
-                  <el-button style="width:100%;" type="success">신청하기</el-button>
+                  <el-button style="width:100%;" type="success" native-type="submit">신청하기</el-button>
                 </div>
               </el-col>
             </div>
@@ -101,7 +101,6 @@
         </el-form-item>
       </el-form>
     </div>
-
     <el-dialog title="개인정보 취급 방침" width="80%" :visible.sync="termDialog">
       <p>넘버원대부중개 개인정보 취급방침</p>
       <p>넘버원대부중개 (이하 “회사”라고 함)는 「개인정보 보호법」, 「신용정보의 이용 및 보호에 관한 법률」 정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「통신비밀 보호법」등 관련 법령에 따라 고객의 개인정보 및 권익을 보호하고 개인정보와 관련한 고객의 고충을 원활하게 처리할 수 있도록 다음과 같은 취급방침을 두고 있습니다.</p>
@@ -201,6 +200,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -208,11 +208,58 @@ export default {
       createUserData: {
         name: '',
         tel: '',
-        loanAmount: ''
-      }
+        loanAmount: '',
+        route: '웹DB',
+        agree: false,
+      },
+      rules: {
+        name: [
+          { required: true, message: '이름을 입력해주세요.', trigger: 'blur' }
+        ],
+        tel: [
+          { required: true, message: '연락처을 입력해주세요.', trigger: 'blur' }
+        ],
+        loanAmount: [
+          {
+            required: true,
+            message: '대출금액을 입력해주세요.',
+            trigger: 'blur'
+          }
+        ],
+        note: [
+          {
+            required: true,
+            message: '문의내용을 입력해주세요.',
+            trigger: 'blur'
+          }
+        ],
+        agree: [
+          {
+            type: 'string',
+            message: '개인정보 취급방침을 동의해주세요.',
+            trigger: 'change'
+          }
+        ]
+      },
     }
   },
-  methods: {}
+  methods: {
+    async createUser() {
+      console.log(this.$refs)
+      console.log(this.$refs.consulForm)
+      this.$refs.consulForm.validate(async valid => {
+        if (valid) {
+          //검증성공
+          const res = await axios.post('/api/consultation', {
+            data: this.createUserData
+          })
+        } else {
+          //검증실패
+          return false
+        }
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
