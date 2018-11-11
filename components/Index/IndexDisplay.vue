@@ -5,7 +5,7 @@
         <el-row :gutter="20">
           <el-col :md="{span: 9, offset: 0}" :sm="{ span: 16, offset:4 }">
             <!-- <on-ssr> -->
-            <div class="box consulBox">
+            <div class="box consulBox" data-aos="fade-in">
               <h1 class="center">전문가에게 상담신청</h1>
               <el-form ref="consulForm" :model="createUserData" :rules="rules" label-width="80px" @submit.native.prevent="createUser" class="consulForm">
                 <el-form-item label="이름" prop="name">
@@ -235,7 +235,7 @@ export default {
   },
   mounted() {
     AOS.init()
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>
