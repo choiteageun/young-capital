@@ -46,7 +46,8 @@ module.exports = {
   */
   plugins: [
     { src: "~/plugins/aos", ssr: false },
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/ui'
   ],
 
   /*

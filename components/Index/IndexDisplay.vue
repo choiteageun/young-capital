@@ -3,9 +3,9 @@
     <section class="display">
       <div class="content">
         <el-row :gutter="20">
-          <el-col :md="{span: 9, offset: 0}" :sm="{ span: 16, offset:4 }">
+          <el-col data-aos="fade-left" :md="{span: 9, offset: 0}" :sm="{ span: 16, offset:4 }">
             <!-- <on-ssr> -->
-            <div class="box consulBox" data-aos="fade-in">
+            <div class="box consulBox">
               <h1 class="center">전문가에게 상담신청</h1>
               <el-form ref="consulForm" :model="createUserData" :rules="rules" label-width="80px" @submit.native.prevent="createUser" class="consulForm">
                 <el-form-item label="이름" prop="name">
@@ -235,7 +235,7 @@ export default {
   },
   mounted() {
     AOS.init()
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -269,10 +269,10 @@ export default {
         height: 250px !important;
       }
     }
-    .el-col > .box {
+    .el-col .box {
       color: white;
     }
-    .el-col > .consulBox {
+    .el-col .consulBox {
       background-color: rgba(0, 0, 0, 0.5);
       box-shadow: 0px 0px 30px 15px rgba(0, 0, 0, 0.3) inset;
 
