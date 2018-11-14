@@ -4,7 +4,7 @@
       <el-col class="title">
         <h1>{{title}}</h1>
       </el-col>
-      <el-col class="explaination"><span><slot></slot></span></el-col>
+      <el-col class="explanation"><span><slot></slot></span></el-col>
     </el-row>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 3px,
     rgba(0, 0, 0, 0.4) 2px 2px 8px;
 }
-.explaination {
+.explanation {
   padding-left: 20px;
   span {
     font-size: 1rem;
