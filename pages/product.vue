@@ -39,16 +39,16 @@
 </template>
 <script>
 import BaseSubHeader from '@/components/Base/BaseSubHeader.vue'
-import ProductFreelancer from '@/components/product/ProductFreelancer.vue'
-import ProductJob from '@/components/product/ProductJob.vue'
-import ProductBuisness from '@/components/product/ProductBuisness.vue'
-import ProductStudent from '@/components/product/ProductStudent.vue'
-import ProductReconstruction from '@/components/product/ProductReconstruction.vue'
-import ProductCar from '@/components/product/ProductCar.vue'
-import ProductArmy from '@/components/product/ProductArmy.vue'
-import ProductGuarantee from '@/components/product/ProductGuarantee.vue'
-import ProductCharter from '@/components/product/ProductCharter.vue'
-import ProductEvidence from '@/components/product/ProductEvidence.vue'
+import ProductFreelancer from '@/components/Product/ProductFreelancer.vue'
+import ProductJob from '@/components/Product/ProductJob.vue'
+import ProductBuisness from '@/components/Product/ProductBuisness.vue'
+import ProductStudent from '@/components/Product/ProductStudent.vue'
+import ProductReconstruction from '@/components/Product/ProductReconstruction.vue'
+import ProductCar from '@/components/Product/ProductCar.vue'
+import ProductArmy from '@/components/Product/ProductArmy.vue'
+import ProductGuarantee from '@/components/Product/ProductGuarantee.vue'
+import ProductCharter from '@/components/Product/ProductCharter.vue'
+import ProductEvidence from '@/components/Product/ProductEvidence.vue'
 
 export default {
   data() {
