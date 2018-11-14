@@ -45,12 +45,17 @@
         </el-form-item>
       </el-form>
     </div>
+    <CustomPrivacyPolicy :visible.sync="termDialog" />
   </div>
 </template>
 <script>
+import axios from 'axios'
+import CustomPrivacyPolicy from '@/components/Custom/CustomPrivacyPolicy.vue'
 export default {
+  components: {CustomPrivacyPolicy },
   data() {
     return {
+      termDialog: false,
       createUserData: {
         name: '',
         tel: '',

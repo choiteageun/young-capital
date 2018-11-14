@@ -14,16 +14,14 @@
       <ProductExplain title="신청 기간">24시간 / 365일 가능</ProductExplain>
     </div>
     <ProductApply />
-    <CustomPrivacyPolicy :visible.sync="termDialog" />
   </div>
 </template>
 <script>
-import axios from 'axios'
 import ProductTitle from '@/components/Product/ProductTitle.vue'
 import ProductExplain from '@/components/Product/ProductExplain.vue'
-import ProductApply from '@/components/Product/ProductApply.vue' 
+import ProductApply from '@/components/Product/ProductApply.vue'
 export default {
-  components: { ProductTitle, ProductExplain, ProductApply },
+  components: { ProductTitle, ProductExplain, ProductApply},
   data() {
     return {
       termDialog: false,
