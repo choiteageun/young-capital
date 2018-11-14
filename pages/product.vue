@@ -17,6 +17,7 @@
           <el-button @click="tab = 'evidence'" :type="(tab === 'evidence' ? 'warning' : 'primary')">무설정 담보 대출</el-button>
         </div>
       </div>
+      
       <div class="content">
         <ProductFreelancer v-if="tab === 'freelancer'"></ProductFreelancer>
         <ProductJob v-else-if="tab === 'job'"></ProductJob>
