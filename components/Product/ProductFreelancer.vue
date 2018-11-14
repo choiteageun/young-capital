@@ -21,7 +21,7 @@
 import axios from 'axios'
 import ProductTitle from '@/components/Product/ProductTitle.vue'
 import ProductExplain from '@/components/Product/ProductExplain.vue'
-import ProductApply from '@/components/Product/ProductApply.vue'
+import ProductApply from '@/components/Product/ProductApply.vue' 
 export default {
   components: { ProductTitle, ProductExplain, ProductApply },
   data() {
