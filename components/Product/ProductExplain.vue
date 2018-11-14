@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-row :gutter="10">
-      <el-col :sm="4" class="title">
+      <el-col :sm="6" class="title">
         <h3>{{title}}</h3>
       </el-col>
-      <el-col :sm="20" class="explain">
+      <el-col :sm="18" class="explain">
         <p>
           <slot></slot>
         </p>

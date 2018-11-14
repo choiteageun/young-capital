@@ -1,113 +1,29 @@
 <template>
   <div>
     <div class="productContainer">
-      <el-row style="margin-bottom:100px;border:none;">
-        <el-col class="Title">
-          <h1>사업자 대출</h1>
-        </el-col>
-        <el-col class="explanation"><span>일정치 않은 소득 때문에 급하게 가게운영자금이나 생계자금이 필요하실때는 사업자대출</span></el-col>
-      </el-row>
-      <el-row class="rowText">
-        <el-col :sm="4">
-          <h3>대상</h3>
-        </el-col>
-        <el-col :sm="20"><span>만 20~만60세,자영업 운영 3개월이상자</span></el-col>
-      </el-row>
-      <el-row class="rowText">
-        <el-col :sm="4">
-          <h3>한도</h3>
-        </el-col>
-        <el-col :sm="20"><span>~ 5,000만원 까지</span></el-col>
-      </el-row>
-      <el-row class="rowText">
-        <el-col :sm="4">
-          <h3>기간</h3>
-        </el-col>
-        <el-col :sm="20"><span>6개월~5년까지 취급 수수료 없음.</span></el-col>
-      </el-row>
-      <el-row class="rowText">
-        <el-col :sm="4">
-          <h3>금리</h3>
-        </el-col>
-        <el-col :sm="20"><span> 연 ~ 24% 이내(연체금리 :대출금리의 최대 24%넘지않음)</span></el-col>
-      </el-row>
-      <el-row class="rowText">
-        <el-col :sm="4">
-          <h3>상환 방식</h3>
-        </el-col>
-        <el-col :sm="20"><span>(매월) 만기일시상환 및 원리금 균등상환</span></el-col>
-      </el-row>
-      <el-row class="rowText marginText">
-        <el-col :sm="4">
-          <h3>구비 서류</h3>
-        </el-col>
-        <el-col :sm="20"><span>신분증,원초본,통장사본,사업자등록증,소득금액증명원or부가세표준증명원,<br/>카드매출통장거래내역</span></el-col>
-      </el-row>
-      <el-row class="rowText">
-        <el-col :sm="4">
-          <h3>지급 방식</h3>
-        </el-col>
-        <el-col :sm="20"><span>대출 완료시 고객 본인이 지정한 본인 계좌로 입금</span></el-col>
-      </el-row>
-      <el-row class="rowText">
-        <el-col :sm="4">
-          <h3>신청 시간</h3>
-        </el-col>
-        <el-col :sm="20"><span>24시간 / 365일 가능</span></el-col>
-      </el-row>
-      <el-row>
-        <el-col style="margin-top:10px;">
-          <h4 style="color:red">※중요:모든 서류에는 주민번호 뒷자리가 않보이게 첨부(예:123456-1******)</h4>
-        </el-col>
-      </el-row>
+      <ProductTitle title="사업자 대출">
+        일정치 않은 소득 때문에 급하게 가게운영자금이나 생계자금이 필요하실때는 사업자대출
+      </ProductTitle>
+      <ProductExplain title="대상">만 20~만60세,자영업 운영 3개월이상자</ProductExplain>
+      <ProductExplain title="한도">~ 5,000만원 까지</ProductExplain>
+      <ProductExplain title="기간">6개월~5년까지 취급 수수료 없음.</ProductExplain>
+      <ProductExplain title="금리"> 연 ~ 24% 이내(연체금리 :대출금리의 최대 24%넘지않음)</ProductExplain>
+      <ProductExplain title="상환 방식">(매월) 만기일시상환 및 원리금 균등상환</ProductExplain>
+      <ProductExplain title="구비 서류">신분증,원초본,통장사본,사업자등록증,소득금액증명원or부가세표준증명원,<br />카드매출통장거래내역</ProductExplain>
+      <ProductExplain title="지급 방식">대출 완료시 고객 본인이 지정한 본인 계좌로 입금</ProductExplain>
+      <ProductExplain title="신청 기간">24시간 / 365일 가능</ProductExplain>
     </div>
-    <div class="formContainer">
-      <el-form ref="consulForm" :rules="rules" :model="createUserData" label-width="80px" @submit.native.prevent="createUser">
-        <el-row>
-          <el-col :sm="7">
-            <el-form-item label="이름" prop="name">
-              <el-input v-model="createUserData.name"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :sm="9">
-            <el-form-item label="연락처" prop="tel">
-              <el-input v-model="createUserData.tel"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :sm="8">
-            <el-form-item label="신청금액" prop="loanAmount">
-              <el-input v-model="createUserData.loanAmount"></el-input>
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-form-item>
-          <el-row>
-            <div>
-              <el-col :sm="16">
-                <div>
-                  <el-form-item label="동의" prop="agree">
-                    <el-checkbox v-model="createUserData.agree" true-label="true" :false-label="0" type="success" label="개인정보 취급방침"></el-checkbox>
-                    <span @click="termDialog=true;" class="terms">약관보기</span>
-                  </el-form-item>
-                </div>
-              </el-col>
-              <el-col :sm="8">
-                <div style="text-align:right;">
-                  <el-button style="width:100%;" type="success" native-type="submit">신청하기</el-button>
-                </div>
-              </el-col>
-            </div>
-          </el-row>
-        </el-form-item>
-      </el-form>
-    </div>
+    <ProductApply />
+    <CustomPrivacyPolicy :visible.sync="termDialog" />
   </div>
 </template>
 <script>
 import axios from 'axios'
-import CustomPrivacyPolicy from "@/components/Custom/CustomPrivacyPolicy.vue"
+import ProductTitle from '@/components/Product/ProductTitle.vue'
+import ProductExplain from '@/components/Product/ProductExplain.vue'
+import ProductApply from '@/components/Product/ProductApply.vue'
 export default {
-  components :{CustomPrivacyPolicy},
+  components: { ProductTitle, ProductExplain, ProductApply },
   data() {
     return {
       termDialog: false,
@@ -116,7 +32,7 @@ export default {
         tel: '',
         loanAmount: '',
         route: '웹DB',
-        agree: false,
+        agree: false
       },
       rules: {
         name: [
@@ -146,7 +62,7 @@ export default {
             trigger: 'change'
           }
         ]
-      },
+      }
     }
   },
   methods: {
@@ -252,8 +168,8 @@ export default {
     padding-right: 8px;
     padding-bottom: 1px;
     margin-bottom: 10px;
-    margin-right:10px;
-    margin-left:10px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
 
   .terms {
