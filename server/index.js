@@ -16,7 +16,7 @@ config.dev = !(app.env === 'production')
 
 async function start() {
   const http = require('http').createServer(app.callback())
-  // const io = require('socket.io')(http)
+  const io = require('socket.io')(http)
 
   const nuxt = new Nuxt(config)
 
@@ -66,13 +66,19 @@ async function start() {
       })
     })
   })
-  // io.on('connection', socket => {
-  //   console.log('유저가 접속함!')
+  io.on('connection', socket => {
+    console.log('유저가 접속함!')
+    // console.log(io.sockets)
 
-  //   socket.on('chat', chat => {
-  //     io.emit('chat', chat)
-  //   })
-  // })
+    socket.on('chat', chat => {
+      io.emit('chat', chat)
+    })
+
+    socket.on("disconnect", reason=>{
+      console.log("유저 접속 해제")
+      console.log(reason)
+    })
+  })
 
   http.listen(port)
   consola.ready({

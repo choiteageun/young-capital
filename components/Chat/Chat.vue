@@ -67,7 +67,7 @@ export default {
     });
   },
   beforeDestroy(){
-    // socket.off("chat")
+    socket.off("chat")
   }
 };
 </script>
