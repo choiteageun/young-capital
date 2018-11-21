@@ -3,6 +3,7 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
+const cors = require("@koa/cors")
 const session = require('koa-session')
 
 const app = new Koa()
@@ -37,6 +38,10 @@ async function start() {
   // router.get("/number", ctx =>{
   //   ctx.body = Math.floor(Math.random() *100)
   // })
+
+  //AJAX 요청 사능하다
+  app.use(cors())
+  
   const api = require('./api/index')
   const router = new Router()
 
