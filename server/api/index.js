@@ -11,10 +11,10 @@ const user = require("./user")
 
 router.use( (ctx, next) =>{
   //해당 도메인만 허용하겠다
-  ctx.res.setHeader("Access-Control-Allow-Origin", "*");
+  ctx.set("Access-Control-Allow-Origin", "*");
 
   //AJAX 요청만 허용하겠다.
-  ctx.res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+  ctx.set("Access-Control-Allow-Headers", "X-Requested-With");
   return next()
 })
 
