@@ -40,9 +40,9 @@ async function start() {
   // })
 
   //AJAX 요청 사능하다
-  app.use(cors({
-    origin: "http://www.numberoneloan.com"
-  }))
+  // app.use(cors({
+  //   origin: "http://www.numberoneloan.com"
+  // }))
 
   const api = require('./api/index')
   const router = new Router()
