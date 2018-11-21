@@ -40,7 +40,8 @@ export default {
       }
 
       socket.emit("chat", {
-        name: this.$store.state.info.name,
+        // name: this.$store.state.info.name,
+        name: "AAA",
         message : this.message
       });
 
