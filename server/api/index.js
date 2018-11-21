@@ -9,17 +9,6 @@ const auth = require("./auth")
 const consultation = require("./consultation")
 const user = require("./user")
 
-const cors = require("@koa/cors")
-
-router.use( (ctx, next) =>{
-  //해당 도메인만 허용하겠다
-  ctx.set("Access-Control-Allow-Origin", "*");
-
-  //AJAX 요청만 허용하겠다.
-  ctx.set("Access-Control-Allow-Headers", "X-Requested-With");
-  return next()
-})
-
 router.use("/auth", auth.routes())
 router.use("/consultation", consultation.routes())
 router.use("/user", user.routes())

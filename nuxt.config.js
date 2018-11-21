@@ -1,5 +1,5 @@
 const bDev = process.env.NODE_ENV === "development"
-const host_url = bDev ? "http://localhost:3000" : "http://numberoneloan.com"
+const host_url = bDev ? "http://localhost:3000" : "http://www.numberoneloan.com"
 const pkg = require('./package')
 
 module.exports = {
