@@ -41,7 +41,7 @@ async function start() {
 
   //AJAX 요청 사능하다
   app.use(cors({
-    origin: "*"
+    origin: "http://www.numberoneloan.com"
   }))
 
   const api = require('./api/index')
