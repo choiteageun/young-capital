@@ -11,7 +11,7 @@
         <el-button type="text">대출 상품</el-button>
       </nuxt-link>
       <nuxt-link to="/limit">
-        <el-button type="text">대출 한도조회</el-button>
+        <el-button type="text">대출한도 간단 조회</el-button>
       </nuxt-link>
       <nuxt-link to="/service">
         <el-button type="text">고객 만족 센터</el-button>
@@ -35,7 +35,7 @@
               </el-menu-item>
               <el-menu-item index="limit">
                 <i class="el-icon-menu"></i>
-                <span>대출 한도 조회</span>
+                <span>대출한도 간단 조회</span>
               </el-menu-item>
               <el-menu-item index="service">
                 <i class="el-icon-menu"></i>

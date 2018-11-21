@@ -64,7 +64,7 @@
               <h1 class="footerTitle">COMPANY POLICY</h1>
               <div class="content companyContent">
                 <div>
-                  <p>개인정보 취급 방침</p>
+                  <p @click="privacyPolicyDialog=true;">개인정보 취급 방침</p>
                 </div>
                 <div>
                   <p>이용약관</p>
@@ -78,6 +78,7 @@
                 <div>
                   <p>인재채용</p>
                 </div>
+                <CustomPrivacyPolicy :visible.sync="privacyPolicyDialog" />
               </div>
             </div>
           </el-col>
@@ -140,9 +141,12 @@
 </template>
 <script>
 import axios from 'axios'
+import CustomPrivacyPolicy from '@/components/Custom/CustomPrivacyPolicy.vue'
 export default {
+  components: {CustomPrivacyPolicy },
   data() {
     return {
+      privacyPolicyDialog:false,
       adminDialog: false,
       adminName: '',
       adminNames: [],

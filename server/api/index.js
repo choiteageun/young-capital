@@ -9,6 +9,15 @@ const auth = require("./auth")
 const consultation = require("./consultation")
 const user = require("./user")
 
+router.use( (ctx, next) =>{
+  //해당 도메인만 허용하겠다
+  ctx.res.setHeader("Access-Control-Allow-Origin", "www.numberoneloan.com,numberoneloan.com");
+
+  //AJAX 요청만 허용하겠다.
+  ctx.res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+  return next()
+})
+
 router.use("/auth", auth.routes())
 router.use("/consultation", consultation.routes())
 router.use("/user", user.routes())
