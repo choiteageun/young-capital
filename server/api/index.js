@@ -11,7 +11,7 @@ const user = require("./user")
 
 router.use( (ctx, next) =>{
   //해당 도메인만 허용하겠다
-  ctx.res.setHeader("Access-Control-Allow-Origin", "http://www.numberoneloan.com,http://numberoneloan.com");
+  ctx.res.setHeader("Access-Control-Allow-Origin", "*");
 
   //AJAX 요청만 허용하겠다.
   ctx.res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
