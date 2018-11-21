@@ -40,8 +40,10 @@ async function start() {
   // })
 
   //AJAX 요청 사능하다
-  app.use(cors())
-  
+  app.use(cors({
+    origin: "*"
+  }))
+
   const api = require('./api/index')
   const router = new Router()
 
