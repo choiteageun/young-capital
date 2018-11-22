@@ -1,11 +1,13 @@
 <template>
   <div class="allContents">
-      <h1>안녕하세요</h1>
+      <h3>나의 맞춤 대출, 신용조회 없이 <sapn style="color:red;">가능 한도 알아보기</sapn></h3>
       <div class="formContainer">
         <el-form>
           <!-- form 작업할 부분 -->
           <div>
-            <span>가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마가나다라마</span>
+            <el-form-item label="이름" prop="name">
+              <el-input v-model="createUserData.name"></el-input>
+            </el-form-item>
           </div>
         </el-form>
       </div>
@@ -13,10 +15,13 @@
   
 </template>
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
-      
+      createUserData:{
+        name:"",
+      }
     }
   },
   methods: {
@@ -25,9 +30,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .allContents {
-  > h1 {
-    text-align: center;
-  }
   .formContainer{
     margin-left:auto;
     margin-right:auto;
