@@ -19,7 +19,6 @@
               <el-form-item label="동의" prop="agree">
                 <el-checkbox v-model="createUserData.agree" true-label="true" :false-label="0" type="success" label="개인정보 취급방침"></el-checkbox>
               </el-form-item>
-
             </div>
           </el-col>
           <el-col :sm="18">
