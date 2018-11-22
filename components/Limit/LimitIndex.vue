@@ -1,6 +1,6 @@
 <template>
   <div class="allContents">
-      <h3>나의 맞춤 대출, 신용조회 없이 <sapn style="color:red;">가능 한도 알아보기</sapn></h3>
+      <h3>나의 맞춤 대출, 신용조회 없이 <span style="color:red;">가능 한도 알아보기</span></h3>
       <div class="formContainer">
         <el-form>
           <!-- form 작업할 부분 -->
