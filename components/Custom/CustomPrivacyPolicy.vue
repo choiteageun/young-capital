@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog title="개인정보 취급 방침" width="80%" :visible.sync="visible" :before-close="handleClose">
+    <el-dialog title="개인정보 취급 방침" width="80%" :visible.sync="visible" :before-close="handleClose" :modalAppendToBody="false">
       <p>넘버원대부중개 개인정보 취급방침</p>
       <p>넘버원대부중개 (이하 “회사”라고 함)는 「개인정보 보호법」, 「신용정보의 이용 및 보호에 관한 법률」 정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「통신비밀 보호법」등 관련 법령에 따라 고객의 개인정보 및 권익을 보호하고 개인정보와 관련한 고객의 고충을 원활하게 처리할 수 있도록 다음과 같은 취급방침을 두고 있습니다.</p>
       <br />

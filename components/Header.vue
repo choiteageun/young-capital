@@ -40,10 +40,10 @@
                 <i class="el-icon-menu"></i>
                 <span>대출 상품</span>
               </el-menu-item>
-              <el-menu-item index="limit">
-                <i class="el-icon-menu"></i>
-                <span>대출한도 간단 조회</span>
-              </el-menu-item>
+              <div>
+                <span @click="limitVisible= true" type="text">대출한도 간단 조회</span>
+                <Limit :visible.sync="limitVisible" />
+              </div>
               <el-menu-item index="service">
                 <i class="el-icon-menu"></i>
                 <span>고객 만족 센터</span>
