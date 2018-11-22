@@ -1,22 +1,34 @@
 <template>
-  <div class="article">
-    <BaseSubHeader>대출 한도 조회</BaseSubHeader>
-  </div>
+  <el-dialog title="대출 가능 한도 조회" width="80%" :visible.sync="visible" :before-close="handleClose" :modalAppendToBody="false">
+    <div class="allContainer">
+      <LimitIndex></LimitIndex>
+      <div slot="footer">
+        <el-button @click="$emit('update:visible', false)">닫기</el-button>
+      </div>
 
+    </div>
+  </el-dialog>
 </template>
 <script>
-import BaseSubHeader from "@/components/Base/BaseSubHeader.vue"
+import LimitIndex from '@/components/Limit/LimitIndex'
 export default {
   data() {
     return {}
   },
-  components:{BaseSubHeader}
+  components: { LimitIndex },
+  methods: {
+    handleClose(done) {
+      this.$emit('update:visible', false)
+    }
+  },
+  props: ['visible']
 }
 </script>
 <style lang="scss" scoped>
-.article {
-  padding-top: 60px;
-  padding-bottom: 60px;
-  min-height: 300vh;
+.allContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

@@ -7,18 +7,25 @@
       </div>
     </nuxt-link>
     <div class="menu-list">
-      <nuxt-link to="/product">
-        <el-button type="text">대출 상품</el-button>
-      </nuxt-link>
-      <nuxt-link to="/limit">
-        <el-button type="text">대출한도 간단 조회</el-button>
-      </nuxt-link>
-      <nuxt-link to="/service">
-        <el-button type="text">고객 만족 센터</el-button>
-      </nuxt-link>
-      <nuxt-link to="/about">
-        <el-button type="text">회사 소개</el-button>
-      </nuxt-link>
+      <div>
+        <nuxt-link to="/product">
+          <el-button type="text">대출 상품</el-button>
+        </nuxt-link>
+      </div>
+      <div>
+        <el-button @click="limitVisible= true" type="text">대출한도 간단 조회</el-button>
+        <Limit :visible.sync="limitVisible" />
+      </div>
+      <div>
+        <nuxt-link to="/service">
+          <el-button type="text">고객 만족 센터</el-button>
+        </nuxt-link>
+      </div>
+      <div>
+        <nuxt-link to="/about">
+          <el-button type="text">회사 소개</el-button>
+        </nuxt-link>
+      </div>
     </div>
     <span class="sidebar-icon">
       <el-button @click="sidebarVisible = true" icon="el-icon-menu" circle type="primary"></el-button>
@@ -53,10 +60,13 @@
   </header>
 </template>
 <script>
+import Limit from '@/pages/limit.vue'
 export default {
+  components: { Limit },
   data() {
     return {
-      sidebarVisible: false
+      sidebarVisible: false,
+      limitVisible: false
     }
   }
 }
@@ -80,8 +90,8 @@ header {
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
-    text-shadow:rgba(255,255,255,1) 1px 1px 2px,
-    rgba(0,0,0,1) 1px 1px 10px;
+    text-shadow: rgba(255, 255, 255, 1) 1px 1px 2px,
+      rgba(0, 0, 0, 1) 1px 1px 10px;
   }
   .menu-list {
     margin: 0;
