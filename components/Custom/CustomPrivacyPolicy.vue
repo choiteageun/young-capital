@@ -100,19 +100,17 @@
 </template>
 <script>
 export default {
-  data(){
-    return{
-
-    }
+  name: 'CustomPrivacyPolicy',
+  data() {
+    return {}
   },
-  methods:{
-    handleClose(done){
+  methods: {
+    handleClose(done) {
       this.$emit('update:visible', false)
     }
   },
-  props:["visible"]
+  props: ['visible']
 }
 </script>
 <style lang="scss" scoped>
-
 </style>

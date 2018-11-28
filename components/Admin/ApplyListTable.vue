@@ -59,6 +59,7 @@ export default {
   methods: {
     open(consul) {
       this.$parent.$refs.dialog.open(consul);
+      
     },
     handleChangePage(newPage) {
       this.paginationData.currPage = newPage;

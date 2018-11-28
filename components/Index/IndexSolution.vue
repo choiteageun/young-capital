@@ -23,7 +23,7 @@
                     <p class="sub_contents"><span style="color: #aaa;">상환 방식 : </span>{{title[box-1].content.six}}</p>
                   </div>
                   <div style="text-align: center; margin-top: 20px;">
-                    <nuxt-link to="product">
+                    <nuxt-link :to="`/product?tab=${title[box-1].name}`">
                       <el-button type="success">{{title[box-1].title}} 신청하러 가기</el-button>
                     </nuxt-link>
                   </div>
@@ -46,6 +46,7 @@ export default {
       title: [
         {
           title: '프리랜서 대출',
+          name:"freelancer",
           content: {
             one:
               '생활비나 학원비로 자금이 필요한 취업준비중인 고객 및 청년을 위한 맞춤상품',
@@ -54,10 +55,11 @@ export default {
             four: '연 ~ 24% 이내',
             five: '(연체금리 : 대출금리의 최대 24%넘지않음)',
             six: '만기일시상환 및 원리금균등상환'
-          }
+          },
         },
         {
           title: '재학생 및 무직자 대출',
+          name:"student",
           content: {
             one:
               '학업을 하면서 식비,생활비,교통비,학원비 등..생활자금이 필요한 경우에는 대학생대출!',
@@ -71,6 +73,7 @@ export default {
         },
         {
           title: '직장인 대출',
+          name:"job",
           content: {
             one:
               '소득활동을 하면서 생활자금,병원비,각종공과금 납부 등 급하게 자금이 필요한 고객을 위한 상품',
@@ -83,6 +86,7 @@ export default {
         },
         {
           title: '사업자 대출',
+          name:"business",
           content: {
             one:
               '일정치 않은 소득 때문에 급하게 가게운영자금이나 생계자금이 필요하실때는 사업자대출',
@@ -95,6 +99,7 @@ export default {
         },
         {
           title: '전월세 대출',
+          name:"charter",
           content: {
             one:
               '대출도 많고 등급도 안좋고 대출이 될까?내이름으로 된 전세,월세가 있다면 집주인 동의없이 가능',
@@ -108,6 +113,7 @@ export default {
         },
         {
           title: '신용회복 및 회생 대출',
+          name:"reconstruction",
           content: {
             one:
               '회생 신청후 최저생계비로 생활하려고 하니 빠듯하시죠~회생 중 생활비가 필요하실때 추천',

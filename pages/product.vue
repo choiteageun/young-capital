@@ -69,6 +69,11 @@ export default {
     ProductGuarantee,
     ProductCharter,
     ProductEvidence
+  },
+  created(){
+    const { tab } = this.$route.query
+    
+    this.tab = tab
   }
 }
 </script>

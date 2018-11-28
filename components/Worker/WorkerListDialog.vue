@@ -211,38 +211,16 @@
           </el-table>
           <el-col>
             <el-form-item label-width="0">
-              <el-input style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
+              <el-input v-model="reportText" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
               </el-input>
             </el-form-item>
           </el-col>
           <el-col style="text-align:right;">
-            <el-button type="primary" native-type="submit">보고하기</el-button>
+            <el-button @click="handleClickReport" type="primary">보고하기</el-button>
           </el-col>
         </el-row>
       </el-dialog>
     </el-form>
-
-    <el-form label-width="80px" @submit.native.prevent="createUser">
-      <el-dialog title="고객 생성" :visible.sync="dialog.createCustomer" width="400px" class="create-user-dialog">
-        <el-form-item label="고객명">
-          <el-input v-model="createUserData.name"></el-input>
-        </el-form-item>
-        <el-form-item label="연락처">
-          <el-input v-model="createUserData.tel"></el-input>
-        </el-form-item>
-        <el-form-item label="신청금액">
-          <el-input v-model="createUserData.loanAmount"></el-input>
-        </el-form-item>
-        <el-form-item label="경로">
-          <el-input v-model="createUserData.route"></el-input>
-        </el-form-item>
-        <div slot="footer">
-          <el-button @click="dialog.createCustomer = false">취소</el-button>
-          <el-button type="primary" native-type="submit">생성</el-button>
-        </div>
-      </el-dialog>
-    </el-form>
-
   </div>
 </template>
 <script>
@@ -256,13 +234,10 @@ export default {
       staff: [{ name: "하이" }, { name: "하삼" }, { name: "하사" }],
       consul: [],
       record: [],
-      createUserData: {
-        name: "",
-        tel: "",
-        loanAmount: "",
-        route: "",
-        manager_id: ""
-      },
+
+      //직원들이 보고 textInput
+      reportText:'',
+      //수정하기 위해 서버에 넘길 데이터
       consulFormData: {
         id: "",
         name: "",
@@ -304,6 +279,10 @@ export default {
     }
   },
   methods: {
+    handleClickReport(){
+      console.log(this.reportText);
+      console.log(this.consulFormData.id);
+    },
     open(consul) {
       this.consulFormData = consul;
 

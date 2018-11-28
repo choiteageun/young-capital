@@ -28,6 +28,7 @@ import Notice from "@/components/Admin/Notice.vue";
 import Staff from "@/components/Admin/Staff.vue";
 
 export default {
+  layout:'admin',
   data() {
     return {
       tab: "apply"

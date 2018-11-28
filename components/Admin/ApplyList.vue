@@ -20,7 +20,7 @@ export default {
         createCustomer: false,
         updateConsul: false
       },
-    };
+    }
   },
 
   methods: {
