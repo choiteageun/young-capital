@@ -44,6 +44,7 @@
 <script>
 import axios from 'axios'
 export default {
+  layout:'empty',
   data() {
     return {
       adminName: '',

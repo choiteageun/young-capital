@@ -30,7 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     grade: DataTypes.STRING,
     coment: DataTypes.STRING,
     record: DataTypes.STRING,
-    memo: DataTypes.STRING
+    memo: DataTypes.STRING,
+    completeAmount: DataTypes.STRING,
   }, {});
   Consultation.associate = function(models) {
     // associations can be defined here

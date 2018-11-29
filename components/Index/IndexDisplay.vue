@@ -77,7 +77,7 @@ import 'aos/dist/aos.css'
 import axios from 'axios'
 import CustomPrivacyPolicy from '@/components/Custom/CustomPrivacyPolicy.vue'
 export default {
-  components: {CustomPrivacyPolicy },
+  components: { CustomPrivacyPolicy },
   data() {
     return {
       termDialog: false,
@@ -86,6 +86,7 @@ export default {
         tel: '',
         loanAmount: '',
         route: '웹DB',
+        //고객이 남기는 메모
         note: '',
         agree: false
       },
@@ -129,6 +130,15 @@ export default {
           //검증성공
           const res = await axios.post('/api/consultation', {
             data: this.createUserData
+          })
+          this.createUserData.name = ''
+          this.createUserData.tel = ''
+          this.createUserData.loanAmount = ''
+          this.createUserData.note = ''
+          this.$notify({
+            title: '상담 신청 완료',
+            message: `상담 신청이 성공적으로 접수되었습니다.`,
+            duration: 5000,
           })
         } else {
           //검증실패

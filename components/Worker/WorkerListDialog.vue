@@ -15,7 +15,7 @@
           </el-col>
           <el-col :span="8">
             <el-form-item label="승인금액">
-              <el-input v-model="consulFormData.loanAmount"></el-input>
+              <el-input v-model="consulFormData.completeAmount"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -123,8 +123,8 @@
                 <el-input></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="12" v-model="consulFormData.period">
-              <el-form-item label="재직기간">
+            <el-col :span="12">
+              <el-form-item v-model="consulFormData.period" label="재직기간">
                 <el-input></el-input>
               </el-form-item>
             </el-col>
@@ -224,53 +224,54 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
   data() {
     return {
-      route: "웹",
-      selected: "",
-      memo: [{ time: "2016-03-21 10:30:23", name: "최태근", note: "없음" }],
-      staff: [{ name: "하이" }, { name: "하삼" }, { name: "하사" }],
+      route: '웹',
+      selected: '',
+      memo: [{ time: '2016-03-21 10:30:23', name: '최태근', note: '없음' }],
+      staff: [{ name: '하이' }, { name: '하삼' }, { name: '하사' }],
       consul: [],
       record: [],
 
       //직원들이 보고 textInput
-      reportText:'',
+      reportText: '',
       //수정하기 위해 서버에 넘길 데이터
       consulFormData: {
-        id: "",
-        name: "",
-        tel: "",
-        loanAmount: "",
-        route: "",
-        situation: "",
-        route: "",
-        birth: "",
-        jobTitle: "",
-        jobGroup: "",
-        about: "",
+        id: '',
+        name: '',
+        tel: '',
+        loanAmount: '',
+        completeAmount: '',
+        route: '',
+        situation: '',
+        route: '',
+        birth: '',
+        jobTitle: '',
+        jobGroup: '',
+        about: '',
         income: 0,
         insurance: false,
         overdue: 0,
         propertyA: false,
-        propertyB: "",
-        manager_id: "",
-        receptionist: "",
-        enrollment_date: "2018-09-28",
-        enrollment_time: "13:00:00",
-        reserve_date: "2018-09-28",
-        reserve_time: "13:00:00",
-        reserve_contents: "",
-        owner: "",
-        agency: "",
-        period: "",
+        propertyB: '',
+        manager_id: '',
+        receptionist: '',
+        enrollment_date: '2018-09-28',
+        enrollment_time: '13:00:00',
+        reserve_date: '2018-09-28',
+        reserve_time: '13:00:00',
+        reserve_contents: '',
+        owner: '',
+        agency: '',
+        period: '',
         marry: false,
-        grade: "",
-        coment: "",
-        memo: ""
+        grade: '',
+        coment: '',
+        memo: ''
       }
-    };
+    }
   },
   props: {
     dialog: {
@@ -279,23 +280,27 @@ export default {
     }
   },
   methods: {
-    handleClickReport(){
-      console.log(this.reportText);
-      console.log(this.consulFormData.id);
+    handleClickReport() {
+      console.log(this.reportText)
+      console.log(this.consulFormData.id)
+      // const data = this.reportText
+      // const res = await axios.get("/api/consultation/consulReport", {
+      //   data: this.reportText,
+      // });
     },
     open(consul) {
-      this.consulFormData = consul;
+      this.consulFormData = consul
 
-      this.dialog.updateConsul = true;
+      this.dialog.updateConsul = true
     },
     async createUser() {
-      const res = await axios.post("/api/consultation", {
+      const res = await axios.post('/api/consultation', {
         data: this.createUserData
-      });
+      })
 
-      this.dialog.createCustomer = false;
+      this.dialog.createCustomer = false
 
-      this.$store.commit("addApply", res.data);
+      this.$store.commit('addApply', res.data)
     },
     async consulForm() {
       const res = await axios.post(
@@ -303,18 +308,23 @@ export default {
         {
           data: this.consulFormData
         }
-      );
+      )
+      this.$notify({
+        title: '수정 완료',
+        message: `수정되었습니다.`,
+        duration: 1500
+      })
 
-      this.consulFormDialog = false;
+      this.consulFormDialog = false
 
-      console.log(res);
+      console.log(res)
     }
   },
   async mounted() {
-    const res = await axios.get("/api/consultation/consulReport", {});
-    this.record = res.data;
+    const res = await axios.get('/api/consultation/consulReport', {})
+    this.record = res.data
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .el-form {
