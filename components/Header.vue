@@ -14,7 +14,7 @@
       </div>
       <div>
         <el-button @click="limitVisible= true" type="text">대출한도 간단 조회</el-button>
-        <Limit :visible.sync="limitVisible" />
+        <LimitIndex :visible.sync="limitVisible" />
       </div>
       <div>
         <nuxt-link to="/service">
@@ -42,7 +42,7 @@
               </el-menu-item>
               <div>
                 <span @click="limitVisible= true" type="text">대출한도 간단 조회</span>
-                <Limit :visible.sync="limitVisible" />
+                <LimitIndex :visible.sync="limitVisible" />
               </div>
               <el-menu-item index="service">
                 <i class="el-icon-menu"></i>
@@ -60,9 +60,9 @@
   </header>
 </template>
 <script>
-import Limit from '@/pages/limit.vue'
+import LimitIndex from '@/components/Limit/LimitIndex.vue'
 export default {
-  components: { Limit },
+  components: { LimitIndex },
   data() {
     return {
       sidebarVisible: false,

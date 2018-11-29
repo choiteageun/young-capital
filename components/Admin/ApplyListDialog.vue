@@ -69,8 +69,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item v-model="consulFormData.reserve_contents" label="내용">
-              <el-input></el-input>
+            <el-form-item label="내용">
+              <el-input v-model="consulFormData.reserve_contents"></el-input>
             </el-form-item>
           </el-col>
 
@@ -92,14 +92,18 @@
               <el-input v-model="consulFormData.birth"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="16">
-            <el-form-item label="명의/통신사">
-              <el-select v-model="consulFormData.owner" placeholder="명의를 확인해주세요" style="width:50%;">
+          <el-col :span="8">
+            <el-form-item label="명의">
+              <el-select v-model="consulFormData.owner" placeholder="명의를 확인해주세요">
                 <el-option label="본인" value="본인"></el-option>
                 <el-option label="직계가족" value="직계가족"></el-option>
                 <el-option label="지인" value="지인"></el-option>
               </el-select>
-              <el-select v-model="consulFormData.agency" placeholder="통신사를 선택해주세요" style="width:50%;">
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="통신사">
+              <el-select v-model="consulFormData.agency" placeholder="통신사를 선택해주세요">
                 <el-option label="SKT" value="SKT"></el-option>
                 <el-option label="LGT" value="LGT"></el-option>
                 <el-option label="KT" value="KT"></el-option>
@@ -109,7 +113,7 @@
           </el-col>
           <el-col :span="8">
             <el-form-item label="직군">
-              <el-select v-model="consulFormData.agency" placeholder="직업군을 선택해주세요">
+              <el-select v-model="consulFormData.jobGroup" placeholder="직업군을 선택해주세요">
                 <el-option label="직장인" value="직장인"></el-option>
                 <el-option label="자영업자" value="자영업자"></el-option>
                 <el-option label="무직" value="무직"></el-option>
@@ -119,24 +123,24 @@
           </el-col>
           <el-col :span="16">
             <el-col :span="12">
-              <el-form-item v-model="consulFormData.jobTitle" label="직장명">
-                <el-input></el-input>
+              <el-form-item label="직장명">
+                <el-input v-model="consulFormData.jobTitle"></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="12" v-model="consulFormData.period">
+            <el-col :span="12">
               <el-form-item label="재직기간">
-                <el-input></el-input>
+                <el-input v-model="consulFormData.period"></el-input>
               </el-form-item>
             </el-col>
           </el-col>
           <el-col :span="8">
-            <el-form-item v-model="consulFormData.about" label="재직정보">
-              <el-input></el-input>
+            <el-form-item label="재직정보">
+              <el-input v-model="consulFormData.about"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item v-model="consulFormData.income" label="소득정보">
-              <el-input></el-input>
+            <el-form-item label="소득정보">
+              <el-input v-model="consulFormData.income"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -211,38 +215,16 @@
           </el-table>
           <el-col>
             <el-form-item label-width="0">
-              <el-input style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
+              <el-input v-model="reportText" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
               </el-input>
             </el-form-item>
           </el-col>
           <el-col style="text-align:right;">
-            <el-button type="primary" native-type="submit">보고하기</el-button>
+            <el-button @click="handleClickReport" type="primary">보고하기</el-button>
           </el-col>
         </el-row>
       </el-dialog>
     </el-form>
-
-    <el-form label-width="80px" @submit.native.prevent="createUser">
-      <el-dialog title="고객 생성" :visible.sync="dialog.createCustomer" width="400px" class="create-user-dialog">
-        <el-form-item label="고객명">
-          <el-input v-model="createUserData.name"></el-input>
-        </el-form-item>
-        <el-form-item label="연락처">
-          <el-input v-model="createUserData.tel"></el-input>
-        </el-form-item>
-        <el-form-item label="신청금액">
-          <el-input v-model="createUserData.loanAmount"></el-input>
-        </el-form-item>
-        <el-form-item label="경로">
-          <el-input v-model="createUserData.route"></el-input>
-        </el-form-item>
-        <div slot="footer">
-          <el-button @click="dialog.createCustomer = false">취소</el-button>
-          <el-button type="primary" native-type="submit">생성</el-button>
-        </div>
-      </el-dialog>
-    </el-form>
-
   </div>
 </template>
 <script>

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="center">
+    <div class="topTitle">
       <h1 class="title">Final Admin Page</h1>
     </div>
     <div class="container flex topBtns">
@@ -60,6 +60,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.topTitle{
+  text-align:center;
+  margin-top:50px;
+}
 .topBtns {
   margin-top: 15px;
   margin-bottom: 15px;

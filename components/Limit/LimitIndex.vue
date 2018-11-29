@@ -62,6 +62,23 @@ export default {
   methods: {
     handleClose(done) {
       this.$emit('update:visible', false)
+    },
+    async consulForm() {
+      const res = await axios.post(
+        `/api/consultation/${this.consulFormData.id}`,
+        {
+          data: this.consulFormData
+        }
+      )
+      this.$notify({
+        title: '한도 조회 완료',
+        message: `접수되었습니다.`,
+        duration: 1500
+      })
+
+      this.consulFormDialog = false
+
+      console.log(res)
     }
   },
   props: ['visible'],
@@ -76,13 +93,6 @@ export default {
       {
         required: true,
         message: '대출금액을 입력해주세요.',
-        trigger: 'blur'
-      }
-    ],
-    note: [
-      {
-        required: true,
-        message: '문의내용을 입력해주세요.',
         trigger: 'blur'
       }
     ],

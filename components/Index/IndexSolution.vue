@@ -86,7 +86,7 @@ export default {
         },
         {
           title: '사업자 대출',
-          name:"business",
+          name:"buisness",
           content: {
             one:
               '일정치 않은 소득 때문에 급하게 가게운영자금이나 생계자금이 필요하실때는 사업자대출',
