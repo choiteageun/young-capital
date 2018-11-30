@@ -1,8 +1,9 @@
 <template>
   <div>
     <!-- 고객 상세정보창 dialog -->
-    <el-form :data="consul" label-width="90px" @submit.native.prevent="consulForm" size="mini">
-      <el-dialog title="고객 정보" :visible.sync="dialog.updateConsul" width="800px" class="consul-form-dialog">
+
+    <el-dialog title="고객 정보" :visible.sync="dialog.updateConsul" width="800px" class="consul-form-dialog">
+      <el-form :data="consul" label-width="90px" @submit.native.prevent="consulForm" size="mini">
         <!-- <el-row>
             <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
             <el-col :span="12"><div class="grid-content bg-purple-light"></div></el-col>
@@ -203,28 +204,30 @@
             <el-button type="danger" @click="dialog.updateConsul= false">목록으로</el-button>
             <el-button type="primary" native-type="submit">수정완료</el-button>
           </el-col>
-          <el-col>
-            <el-input v-model="consulFormData.coment" style="margin-top:20px;margin-bottom:20px;" type="textarea" :autosize="{ minRows: 1, maxRows: 2}" disabled placeholder="상담내용"></el-input>
-          </el-col>
-          <el-table :data="record" size="mini" style="width:100%;">
-            <el-table-column>
-              <el-table-column prop="time" label="시간" width="150px"></el-table-column>
-              <el-table-column prop="name" label="이름" width="60px"></el-table-column>
-              <el-table-column prop="reserve_contents" label="내용" width="550px"></el-table-column>
-            </el-table-column>
-          </el-table>
-          <el-col>
-            <el-form-item label-width="0">
-              <el-input v-model="reportText" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
-              </el-input>
-            </el-form-item>
-          </el-col>
-          <el-col style="text-align:right;">
-            <el-button @click="handleClickReport" type="primary">보고하기</el-button>
-          </el-col>
         </el-row>
-      </el-dialog>
-    </el-form>
+      </el-form>
+      <el-form :data="record" label-width="90px" @submit.native.prevent="handleClickReport" size="mini">
+        <el-col>
+          <el-input v-model="consulFormData.coment" style="margin-top:20px;margin-bottom:20px;" type="textarea" :autosize="{ minRows: 1, maxRows: 2}" disabled placeholder="상담내용"></el-input>
+        </el-col>
+        <el-table :data="record" size="mini" style="width:100%;">
+          <el-table-column>
+            <el-table-column prop="time" label="시간" width="150px"></el-table-column>
+            <el-table-column prop="name" label="이름" width="60px"></el-table-column>
+            <el-table-column prop="reserve_contents" label="내용" width="550px"></el-table-column>
+          </el-table-column>
+        </el-table>
+        <el-col>
+          <el-form-item label-width="0">
+            <el-input v-model="reportText" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
+            </el-input>
+          </el-form-item>
+        </el-col>
+        <el-col style="text-align:right;">
+          <el-button @click="handleClickReport" type="primary">보고하기</el-button>
+        </el-col>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -234,7 +237,13 @@ export default {
     return {
       route: '웹',
       selected: '',
-      memo: [{ time: '2016-03-21 10:30:23', name: '최태근', reserve_contents: '없음' }],
+      memo: [
+        {
+          time: '2016-03-21 10:30:23',
+          name: '최태근',
+          reserve_contents: '없음'
+        }
+      ],
       staff: [{ name: '하이' }, { name: '하삼' }, { name: '하사' }],
       consul: [],
       record: [],
@@ -276,7 +285,8 @@ export default {
         marry: false,
         grade: '',
         coment: '',
-        memo: ''
+        memo: '',
+        note: ''
       }
     }
   },

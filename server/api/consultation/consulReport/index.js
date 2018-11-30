@@ -22,7 +22,7 @@ router.post("/:id", async ctx => {
   const { id } = ctx.params
   // const data = ctx.request.body.data = const { data } = ctx.request.body
   //const data = ctx.request.body.data = const { data , as , kk } = ctx.request.body
-  console.log(data)
+  console.log("data : "+data.reserve_contents)
   const result = await models.Notememo.create(data);
   ctx.body = result;
 });

@@ -215,7 +215,7 @@
           </el-table>
           <el-col>
             <el-form-item label-width="0">
-              <el-input v-model="reportText" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
+              <el-input v-model="consulFormData.reserve_contents" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
               </el-input>
             </el-form-item>
           </el-col>
@@ -237,7 +237,12 @@ export default {
       memo: [{ time: '2016-03-21 10:30:23', name: '최태근', reserve_contents: '없음' }],
       staff: [{ name: '하이' }, { name: '하삼' }, { name: '하사' }],
       consul: [],
-      record: [],
+      record: {
+        id: '',
+        userId : '',
+        consulId: '',
+        reserve_contents: '',
+      },
 
       //직원들이 보고 할 textInput
       reportText: '',
@@ -273,7 +278,8 @@ export default {
         marry: false,
         grade: '',
         coment: '',
-        memo: ''
+        memo: '',
+        note: '',
       }
     }
   },
@@ -288,8 +294,9 @@ export default {
       console.log(this.reportText)
       console.log(this.consulFormData.id)
       const res = await axios.post(`/api/consultation/consulReport/${this.consulFormData.id}`,{
-        data:this.reportText,
+        data:this.consulFormData,
       })
+      console.log(this.consulFormData);
     },
     open(consul) {
       this.consulFormData = consul
@@ -324,9 +331,11 @@ export default {
     }
   },
   async mounted() {
-    const res = await axios.get(`/api/consultation/consulReport`, {})
+    
+    const res = await axios.get(`/api/consultation/consulReport`, {
+    })
+    
     this.record = res.data
-    console.log("asjdhaskj"+res.data)
   }
 }
 </script>
