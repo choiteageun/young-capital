@@ -17,7 +17,7 @@
           <el-button @click="tab = 'evidence'" :type="(tab === 'evidence' ? 'warning' : 'primary')">무설정 담보 대출</el-button>
         </div>
       </div>
-      
+
       <div class="content">
         <ProductFreelancer v-if="tab === 'freelancer'"></ProductFreelancer>
         <ProductJob v-else-if="tab === 'job'"></ProductJob>
@@ -70,10 +70,13 @@ export default {
     ProductCharter,
     ProductEvidence
   },
-  created(){
+  created() {
     const { tab } = this.$route.query
-    
-    this.tab = tab
+
+    if (tab){
+      this.tab = tab
+    }
+    console.log(this.tab)
   }
 }
 </script>
@@ -87,7 +90,7 @@ export default {
       flex-direction: column;
       @media (max-width: 767px) {
         flex-direction: row;
-        overflow-x:auto;
+        overflow-x: auto;
       }
       .el-button {
         min-width: 200px;
@@ -101,8 +104,8 @@ export default {
     @media (max-width: 767px) {
       flex-direction: column;
     }
-    .content{
-      width:100%;
+    .content {
+      width: 100%;
     }
   }
 }

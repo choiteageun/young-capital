@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     note: DataTypes.STRING,
     consulId: DataTypes.INTEGER,
+    reserve_contents: DataTypes.STRING,
   }, {});
   Notememo.associate = function(models) {
     // associations can be defined here

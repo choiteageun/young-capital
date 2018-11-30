@@ -2,14 +2,14 @@
   <div>
     <IndexDisplay></IndexDisplay>
     <IndexSolution></IndexSolution>
-    <el-button @click="dialog.a = true">다이얼로그 띄우기</el-button>
+    <!-- <el-button @click="dialog.a = true">다이얼로그 띄우기</el-button>
     <el-dialog title="A" :visible.sync="dialog.a">
       <el-button @click="dialog.b = true">하나 더 띄우기</el-button>
       <el-button @click="dialog.a = false">닫기</el-button>
     </el-dialog>
     <el-dialog title="B" :visible.sync="dialog.b">
       <el-button @click="dialog.b = false">닫기</el-button>
-    </el-dialog>
+    </el-dialog> -->
     <IndexInformation></IndexInformation>
     <IndexDecoration></IndexDecoration>
     <IndexCommunity></IndexCommunity>

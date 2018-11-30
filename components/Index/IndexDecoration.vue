@@ -83,8 +83,12 @@ export default {
     box-shadow: inset -30px 0px 60px 0px #fff, inset 0px 0px 30px 0px #fff,
       inset 0px 0px 30px 0px #fff, inset 0px 0px 30px 0px #fff,
       inset 0px 0px 30px 0px #fff;
+      margin-left:40px;
+      margin-right:40px;
   }
   .decoConBox {
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
     overflow: hidden;
     .expContent {

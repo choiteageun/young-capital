@@ -56,6 +56,28 @@ export default {
         note: '',
         route: '웹DB',
         agree: false
+      },
+      rules: {
+        name: [
+          { required: true, message: '이름을 입력해주세요.', trigger: 'blur' }
+        ],
+        tel: [
+          { required: true, message: '연락처을 입력해주세요.', trigger: 'blur' }
+        ],
+        loanAmount: [
+          {
+            required: true,
+            message: '대출금액을 입력해주세요.',
+            trigger: 'blur'
+          }
+        ],
+        agree: [
+          {
+            type: 'string',
+            message: '개인정보 취급방침을 동의해주세요.',
+            trigger: 'change'
+          }
+        ]
       }
     }
   },
@@ -81,29 +103,7 @@ export default {
       console.log(res)
     }
   },
-  props: ['visible'],
-  rules: {
-    name: [
-      { required: true, message: '이름을 입력해주세요.', trigger: 'blur' }
-    ],
-    tel: [
-      { required: true, message: '연락처을 입력해주세요.', trigger: 'blur' }
-    ],
-    loanAmount: [
-      {
-        required: true,
-        message: '대출금액을 입력해주세요.',
-        trigger: 'blur'
-      }
-    ],
-    agree: [
-      {
-        type: 'string',
-        message: '개인정보 취급방침을 동의해주세요.',
-        trigger: 'change'
-      }
-    ]
-  }
+  props: ['visible']
 }
 </script>
 <style lang="scss" scoped>

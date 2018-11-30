@@ -210,7 +210,7 @@
             <el-table-column>
               <el-table-column prop="time" label="시간" width="150px"></el-table-column>
               <el-table-column prop="name" label="이름" width="60px"></el-table-column>
-              <el-table-column prop="note" label="내용" width="550px"></el-table-column>
+              <el-table-column prop="reserve_contents" label="내용" width="550px"></el-table-column>
             </el-table-column>
           </el-table>
           <el-col>
@@ -234,12 +234,12 @@ export default {
     return {
       route: '웹',
       selected: '',
-      memo: [{ time: '2016-03-21 10:30:23', name: '최태근', note: '없음' }],
+      memo: [{ time: '2016-03-21 10:30:23', name: '최태근', reserve_contents: '없음' }],
       staff: [{ name: '하이' }, { name: '하삼' }, { name: '하사' }],
       consul: [],
       record: [],
 
-      //직원들이 보고 textInput
+      //직원들이 보고 할 textInput
       reportText: '',
       //수정하기 위해 서버에 넘길 데이터
       consulFormData: {
@@ -284,13 +284,12 @@ export default {
     }
   },
   methods: {
-    handleClickReport() {
+    async handleClickReport() {
       console.log(this.reportText)
       console.log(this.consulFormData.id)
-      // const data = this.reportText
-      // const res = await axios.get("/api/consultation/consulReport", {
-      //   data: this.reportText,
-      // });
+      const res = await axios.post(`/api/consultation/consulReport/${this.consulFormData.id}`,{
+        data:this.reportText,
+      })
     },
     open(consul) {
       this.consulFormData = consul
@@ -325,8 +324,9 @@ export default {
     }
   },
   async mounted() {
-    const res = await axios.get('/api/consultation/consulReport', {})
+    const res = await axios.get(`/api/consultation/consulReport`, {})
     this.record = res.data
+    console.log("asjdhaskj"+res.data)
   }
 }
 </script>
