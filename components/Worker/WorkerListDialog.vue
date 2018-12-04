@@ -1,8 +1,9 @@
 <template>
   <div>
     <!-- 고객 상세정보창 dialog -->
-    <el-form :data="consul" label-width="90px" @submit.native.prevent="consulForm" size="mini">
-      <el-dialog title="고객 정보" :visible.sync="dialog.updateConsul" width="800px" class="consul-form-dialog">
+
+    <el-dialog title="고객 정보" :visible.sync="dialog.updateConsul" width="800px" class="consul-form-dialog">
+      <el-form :data="consul" label-width="90px" @submit.native.prevent="consulForm" size="mini">
         <!-- <el-row>
             <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
             <el-col :span="12"><div class="grid-content bg-purple-light"></div></el-col>
@@ -15,7 +16,7 @@
           </el-col>
           <el-col :span="8">
             <el-form-item label="승인금액">
-              <el-input disabled v-model="consulFormData.completeAmount"></el-input>
+              <el-input v-model="consulFormData.completeAmount"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -206,25 +207,29 @@
           <el-col>
             <el-input v-model="consulFormData.coment" style="margin-top:20px;margin-bottom:20px;" type="textarea" :autosize="{ minRows: 1, maxRows: 2}" disabled placeholder="상담내용"></el-input>
           </el-col>
+        </el-row>
+      </el-form>
+      <el-form :data="recordFormData" label-width="90px" @submit.native.prevent="handleClickReport" size="mini">
+        <el-row>
           <el-table :data="record" size="mini" style="width:100%;">
             <el-table-column>
-              <el-table-column prop="time" label="시간" width="150px"></el-table-column>
-              <el-table-column prop="name" label="이름" width="60px"></el-table-column>
+              <el-table-column prop="createdAt" label="시간" width="150px"></el-table-column>
+              <el-table-column prop="userName" label="이름" width="60px"></el-table-column>
               <el-table-column prop="reserve_contents" label="내용" width="550px"></el-table-column>
             </el-table-column>
           </el-table>
           <el-col>
             <el-form-item label-width="0">
-              <el-input v-model="consulFormData.reserve_contents" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
+              <el-input v-model="recordFormData.reserve_contents" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
               </el-input>
             </el-form-item>
           </el-col>
           <el-col style="text-align:right;">
-            <el-button @click="handleClickReport" type="primary">보고하기</el-button>
+            <el-button type="primary" native-type="submit">보고하기</el-button>
           </el-col>
         </el-row>
-      </el-dialog>
-    </el-form>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -234,14 +239,23 @@ export default {
     return {
       route: '웹',
       selected: '',
-      memo: [{ time: '2016-03-21 10:30:23', name: '최태근', reserve_contents: '없음' }],
+      memo: [
+        {
+          time: '2016-03-21 10:30:23',
+          name: '최태근',
+          reserve_contents: '없음'
+        }
+      ],
       staff: [{ name: '하이' }, { name: '하삼' }, { name: '하사' }],
+      record: [],
       consul: [],
-      record: {
+      recordFormData: {
         id: '',
-        userId : '',
+        userId: this.$store.state.info.id,
+        userName: this.$store.state.info.name,
         consulId: '',
         reserve_contents: '',
+        createdAt: ''
       },
 
       //직원들이 보고 할 textInput
@@ -279,7 +293,7 @@ export default {
         grade: '',
         coment: '',
         memo: '',
-        note: '',
+        note: ''
       }
     }
   },
@@ -291,16 +305,15 @@ export default {
   },
   methods: {
     async handleClickReport() {
-      console.log(this.reportText)
-      console.log(this.consulFormData.id)
-      const res = await axios.post(`/api/consultation/consulReport/${this.consulFormData.id}`,{
-        data:this.consulFormData,
+      console.log('1')
+      this.recordFormData.consulId = this.consulFormData.id
+      const res = await axios.post(`/api/consultation/consulReport`, {
+        data: this.recordFormData
       })
-      console.log(this.consulFormData);
+      console.log(this.recordFormData)
     },
-    open(consul) {
+    async open(consul) {
       this.consulFormData = consul
-
       this.dialog.updateConsul = true
     },
     async createUser() {
@@ -331,10 +344,11 @@ export default {
     }
   },
   async mounted() {
-    
-    const res = await axios.get(`/api/consultation/consulReport`, {
-    })
-    
+    const res = await axios.get(
+      `/api/consultation/consulReport/${this.consulFormData.id}`,
+      {}
+    )
+
     this.record = res.data
   }
 }

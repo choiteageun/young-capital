@@ -23,7 +23,7 @@ router.post("/", async ctx => {
   const { data } = ctx.request.body;
   // const data = ctx.request.body.data = const { data } = ctx.request.body
   //const data = ctx.request.body.data = const { data , as , kk } = ctx.request.body
-
+  
   const result = await models.Consultation.create(data);
 
   ctx.body = result;

@@ -204,30 +204,52 @@
             <el-button type="danger" @click="dialog.updateConsul= false">목록으로</el-button>
             <el-button type="primary" native-type="submit">수정완료</el-button>
           </el-col>
+          <el-col>
+            <el-input v-model="consulFormData.coment" style="margin-top:20px;margin-bottom:20px;" type="textarea" :autosize="{ minRows: 1, maxRows: 2}" disabled placeholder="상담내용"></el-input>
+          </el-col>
         </el-row>
       </el-form>
-      <el-form :data="record" label-width="90px" @submit.native.prevent="handleClickReport" size="mini">
-        <el-col>
-          <el-input v-model="consulFormData.coment" style="margin-top:20px;margin-bottom:20px;" type="textarea" :autosize="{ minRows: 1, maxRows: 2}" disabled placeholder="상담내용"></el-input>
-        </el-col>
-        <el-table :data="record" size="mini" style="width:100%;">
-          <el-table-column>
-            <el-table-column prop="time" label="시간" width="150px"></el-table-column>
-            <el-table-column prop="name" label="이름" width="60px"></el-table-column>
-            <el-table-column prop="reserve_contents" label="내용" width="550px"></el-table-column>
-          </el-table-column>
-        </el-table>
-        <el-col>
-          <el-form-item label-width="0">
-            <el-input v-model="reportText" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
-            </el-input>
-          </el-form-item>
-        </el-col>
-        <el-col style="text-align:right;">
-          <el-button @click="handleClickReport" type="primary">보고하기</el-button>
-        </el-col>
+      <el-form :data="recordFormData" label-width="90px" @submit.native.prevent="handleClickReport" size="mini">
+        <el-row>
+          <el-table :data="record" size="mini" style="width:100%;">
+            <el-table-column>
+              <el-table-column prop="createdAt" label="시간" width="150px"></el-table-column>
+              <el-table-column prop="name" label="이름" width="60px"></el-table-column>
+              <el-table-column prop="reserve_contents" label="내용" width="550px"></el-table-column>
+            </el-table-column>
+          </el-table>
+          <el-col>
+            <el-form-item label-width="0">
+              <el-input v-model="recordFormData.reserve_contents" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
+              </el-input>
+            </el-form-item>
+          </el-col>
+          <el-col style="text-align:right;">
+            <el-button type="primary" native-type="submit">보고하기</el-button>
+          </el-col>
+        </el-row>
       </el-form>
     </el-dialog>
+    <el-form label-width="80px" @submit.native.prevent="createUser">
+      <el-dialog title="고객 생성" :visible.sync="dialog.createCustomer" width="400px" class="create-user-dialog">
+        <el-form-item label="고객명">
+          <el-input v-model="createUserData.name"></el-input>
+        </el-form-item>
+        <el-form-item label="연락처">
+          <el-input v-model="createUserData.tel"></el-input>
+        </el-form-item>
+        <el-form-item label="신청금액">
+          <el-input v-model="createUserData.loanAmount"></el-input>
+        </el-form-item>
+        <el-form-item label="경로">
+          <el-input v-model="createUserData.route"></el-input>
+        </el-form-item>
+        <div slot="footer">
+          <el-button @click="dialog.createCustomer = false">취소</el-button>
+          <el-button type="primary" native-type="submit">생성</el-button>
+        </div>
+      </el-dialog>
+    </el-form>
   </div>
 </template>
 <script>
@@ -245,15 +267,25 @@ export default {
         }
       ],
       staff: [{ name: '하이' }, { name: '하삼' }, { name: '하사' }],
-      consul: [],
       record: [],
-      createUserData: {
-        name: '',
-        tel: '',
-        loanAmount: '',
-        route: '',
-        manager_id: ''
+      consul: [],
+      recordFormData: {
+        id: '',
+        userId: '',
+        consulId: '',
+        reserve_contents: '',
+        createdAt:'',
       },
+      createUserData: {
+        name: "",
+        tel: "",
+        loanAmount: "",
+        route: "",
+      },
+
+      //직원들이 보고 할 textInput
+      reportText: '',
+      //수정하기 위해 서버에 넘길 데이터
       consulFormData: {
         id: '',
         name: '',
@@ -297,21 +329,33 @@ export default {
     }
   },
   methods: {
+    async handleClickReport() {
+      console.log("1");
+      this.recordFormData.consulId = this.consulFormData.id;
+      const res = await axios.post(
+        `/api/consultation/consulReport`,
+        {
+          data: this.recordFormData
+        }
+      )
+      console.log(this.recordFormData)
+    },
     open(consul) {
       this.consulFormData = consul
 
       this.dialog.updateConsul = true
     },
     async createUser() {
+      console.log(this.createUserData)
       const res = await axios.post('/api/consultation', {
         data: this.createUserData
       })
-
       this.dialog.createCustomer = false
 
       this.$store.commit('addApply', res.data)
     },
     async consulForm() {
+      console.log("2");
       const res = await axios.post(
         `/api/consultation/${this.consulFormData.id}`,
         {
@@ -330,7 +374,8 @@ export default {
     }
   },
   async mounted() {
-    const res = await axios.get('/api/consultation/consulReport', {})
+    const res = await axios.get(`/api/consultation/consulReport`, {})
+
     this.record = res.data
   }
 }

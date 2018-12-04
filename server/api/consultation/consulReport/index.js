@@ -6,23 +6,37 @@ const User = require("../../../models/User");
 
 const router = new Router()
 router.get('/',async ctx=>{
-  
   const res = await models.Notememo.findAll({
   })
   ctx.body= res;
 })
+router.get('/:id',async ctx=>{
+  console.log("id : ");
+  console.log(id);
+  const { id } = ctx.params
+  console.log("id2 : ");
+  console.log(id);
+  const res = await models.Notememo.findAll({
+    where:{
+      cunsulId:id
+    }
+  })
+  console.log()
+  ctx.body= res;
+})
 
 router.post('/',async ctx=>{
-  const res = await models.Notememo.findAll({
-  })
-  ctx.body= res;
+  const { data } = ctx.request.body;
+
+  const result = await models.Notememo.create(data);
+  ctx.body = result;
 })
 router.post("/:id", async ctx => {
   const { data } = ctx.request.body;
   const { id } = ctx.params
   // const data = ctx.request.body.data = const { data } = ctx.request.body
   //const data = ctx.request.body.data = const { data , as , kk } = ctx.request.body
-  console.log("data : "+data.reserve_contents)
+  
   const result = await models.Notememo.create(data);
   ctx.body = result;
 });
