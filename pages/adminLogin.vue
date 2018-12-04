@@ -65,7 +65,13 @@ export default {
         this.$store.commit('login', info)
         this.wrongPassword = false
         this.explainText = true
-        this.$router.push("/admin")
+
+        //관리자 {id: 1번} 나머지는 worker 로 이동
+        if( info.id ===1 ){
+          this.$router.push('/admin')
+        }else{
+          this.$router.push('/worker')
+        }
       } catch (e) {
         this.wrongPassword = true
         this.explainText = false

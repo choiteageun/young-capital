@@ -11,18 +11,13 @@ router.get('/',async ctx=>{
   ctx.body= res;
 })
 router.get('/:id',async ctx=>{
-  console.log("id : ");
-  console.log(id);
   const { id } = ctx.params
-  console.log("id2 : ");
-  console.log(id);
-  const res = await models.Notememo.findAll({
+  const memos = await models.Notememo.findAll({
     where:{
-      cunsulId:id
+      consulId:id
     }
   })
-  console.log()
-  ctx.body= res;
+  ctx.body= memos;
 })
 
 router.post('/',async ctx=>{

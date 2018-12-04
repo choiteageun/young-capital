@@ -32,7 +32,7 @@
             <el-form-item label="담당/접수자">
               <el-col :span="11">
                 <el-select v-model="consulFormData.manager_id" style="width:50%;">
-                  <el-option v-for="staff in 3" :key="staff" :label="staff.name"></el-option>
+                  <el-option v-for="staff in 3" :key="staff" :label="staff.name" :value="staff.id"></el-option>
                 </el-select>
               </el-col>
               <el-col :span="2" class="center">/</el-col>
@@ -213,14 +213,18 @@
         <el-row>
           <el-table :data="record" size="mini" style="width:100%;">
             <el-table-column>
-              <el-table-column prop="createdAt" label="시간" width="150px"></el-table-column>
+              <el-table-column prop="createdAt" label="시간" width="150px">
+                <template slot-scope="scope">
+                  {{scope.row.createdAt | time}}
+                </template>
+              </el-table-column>
               <el-table-column prop="userName" label="이름" width="60px"></el-table-column>
               <el-table-column prop="reserve_contents" label="내용" width="550px"></el-table-column>
             </el-table-column>
           </el-table>
           <el-col>
             <el-form-item label-width="0">
-              <el-input v-model="recordFormData.reserve_contents" style="resize:none;" type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="내용을 입력해주세요">
+              <el-input v-model="recordFormData.reserve_contents" style="resize:none;" placeholder="내용을 입력해주세요">
               </el-input>
             </el-form-item>
           </el-col>
@@ -234,6 +238,7 @@
 </template>
 <script>
 import axios from 'axios'
+import moment from "moment"   //시간 객체 조작 라이브러리
 export default {
   data() {
     return {
@@ -303,6 +308,11 @@ export default {
       required: true
     }
   },
+  filters:{
+    time(value){
+      return moment(value).format("YYYY-MM-DD HH:mm:ss")
+    }
+  },
   methods: {
     async handleClickReport() {
       console.log('1')
@@ -311,10 +321,17 @@ export default {
         data: this.recordFormData
       })
       console.log(this.recordFormData)
+      this.recordFormData.reserve_contents = ''
+      this.record.push(res.data);
     },
     async open(consul) {
       this.consulFormData = consul
       this.dialog.updateConsul = true
+      const res = await axios.get(
+        `/api/consultation/consulReport/${this.consulFormData.id}`,
+        {}
+      )
+      this.record = res.data;
     },
     async createUser() {
       const res = await axios.post('/api/consultation', {
@@ -331,6 +348,7 @@ export default {
         {
           data: this.consulFormData
         }
+
       )
       this.$notify({
         title: '수정 완료',
@@ -344,12 +362,11 @@ export default {
     }
   },
   async mounted() {
-    const res = await axios.get(
-      `/api/consultation/consulReport/${this.consulFormData.id}`,
-      {}
-    )
-
-    this.record = res.data
+    // const res = await axios.get(
+    //   `/api/consultation/consulReport/${this.consulFormData.id}`,
+    //   {}
+    // )
+    // this.record = res.data
   }
 }
 </script>

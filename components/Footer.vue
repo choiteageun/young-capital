@@ -6,44 +6,32 @@
           <el-col class="footerContent" :md="6" :sm="12">
             <div class="contents">
               <h1 class="footerTitle">ABOUT</h1>
-              <div class="content companyInfo">
-                <div class="abo_oneLine">
-                  <el-row>
-                    <el-col :span="6"><i class="icon far fa-building"></i></el-col>
-                    <el-col :span="18"><span>넘버원 대부중개</span></el-col>
-                  </el-row>
-                </div>
-                <div class="abo_twoLine">
-                  <el-row>
-                    <el-col :span="6"><i class="icon far fa-clipboard"></i></el-col>
-                    <el-col :span="18"><span>123-45-678910</span></el-col>
-                  </el-row>
-                </div>
-                <div class="abo_threeLine">
-                  <el-row>
-                    <el-col :span="6"><i class="icon fas fa-phone"></i></el-col>
-                    <el-col :span="18"><span>070 7049 0620 </span></el-col>
-                  </el-row>
-                </div>
-                <div class="abo_fourLine">
-                  <el-row>
-                    <el-col :span="6"><i class="icon fas fa-at"></i></el-col>
-                    <el-col :span="18"><span>information@naver.com</span></el-col>
-                  </el-row>
-                </div>
-                <div class="abo_fiveLine">
-                  <el-row>
-                    <el-col :span="6"><i class="icon fas fa-map-marked-alt"></i></el-col>
-                    <el-col :span="18"><span>서울특별시 강북구 한천로124가길 53, 103호</span></el-col>
-                  </el-row>
-                </div>
-                <div class="abo_sixLine">
-                  <el-row>
-                    <el-col :span="6"><i class="icon far fa-user"></i></el-col>
-                    <el-col :span="18"><span>김민주</span></el-col>
-                  </el-row>
-                </div>
-              </div>
+              <ul class="content companyInfo">
+                <li>
+                  <i class="icon far fa-building"></i>
+                  <p>넘버원 대부중개</p>
+                </li>
+                <li>
+                  <i class="icon far fa-clipboard"></i>
+                  <p>123-45-678910</p>
+                </li>
+                <li>
+                  <i class="icon fas fa-phone"></i>
+                  <p>070 7049 0620</p>
+                </li>
+                <li>
+                  <i class="icon fas fa-at"></i>
+                  <p>information@naver.com</p>
+                </li>
+                <li>
+                  <i class="icon fas fa-map-marked-alt"></i>
+                  <p>서울특별시 강북구 한천로124가길 53, 103호</p>
+                </li>
+                <li>
+                  <i class="icon far fa-user"></i>
+                  <p>김민주</p>
+                </li>
+              </ul>
             </div>
           </el-col>
           <el-col class="footerContent" :md="6" :sm="12">
@@ -88,12 +76,15 @@
               <div class="communityContent">
                 <div class="kakaoCon iconBox">
                   <img src="img/main/naver.png">
+                  <p>네이버</p>
                 </div>
                 <div class="naverCon iconBox">
                   <img src="img/main/kakaotalkIcon.png">
+                  <p>카카오톡</p>
                 </div>
                 <div class="bandCon iconBox">
                   <img src="img/main/band.jpg">
+                  <p>네이버 밴드</p>
                 </div>
               </div>
               <div class="content ">
@@ -103,7 +94,10 @@
           </el-col>
         </el-row>
       </div>
-      <!-- <p v-if="!$store.state.logged" @click="adminDialog= true">
+
+    </footer>
+    <div class="admin-login">
+      <p v-if="!$store.state.logged" @click="adminDialog= true">
         로그인
       </p>
 
@@ -113,9 +107,9 @@
           <span style="color: white;">관리자 페이지</span>
         </nuxt-link>
 
-      </p> -->
-    </footer>
-    <!-- <el-form @submit.native.prevent="handleAdminSubmit" label-width="80px">
+      </p>
+    </div>
+    <el-form @submit.native.prevent="handleAdminSubmit" label-width="80px">
       <el-dialog title="로그인" :visible.sync="adminDialog" width="400px">
         <p style="margin-bottom:15px;">양식을 채워주세요</p>
         <el-form-item label="직원 이름">
@@ -136,17 +130,17 @@
           <el-button type="primary" native-type="submit">로그인</el-button>
         </div>
       </el-dialog>
-    </el-form> -->
+    </el-form>
   </div>
 </template>
 <script>
 import axios from 'axios'
 import CustomPrivacyPolicy from '@/components/Custom/CustomPrivacyPolicy.vue'
 export default {
-  components: {CustomPrivacyPolicy },
+  components: { CustomPrivacyPolicy },
   data() {
     return {
-      privacyPolicyDialog:false,
+      privacyPolicyDialog: false,
       adminDialog: false,
       adminName: '',
       adminNames: [],
@@ -184,8 +178,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .footer {
-  background-color: #715d60;
-  padding:20px 40px;
+  background-color: $primary;
+  padding: 20px 40px;
   .footerContent {
     max-width: 1000px;
     margin-right: auto;
@@ -196,6 +190,8 @@ export default {
 
     .footerTitle {
       text-align: center;
+      margin-bottom: 20px;
+      font-size: 1rem;
     }
     .content {
       margin-left: 20px;
@@ -207,14 +203,34 @@ export default {
       padding-bottom: 20px;
       height: 400px;
       .companyInfo {
-        .icon {
-          margin-left: 10px;
-          margin-right: 50px;
+        list-style: none;
+        padding: 0;
+        li {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          border-bottom: 1px solid white;
+          padding-bottom: 15px;
+          i {
+            text-align: center;
+            width: 30px;
+            font-size: 1.2rem;
+          }
+          p {
+            flex: 1;
+            text-align: right;
+            font-size: 0.8rem;
+          }
         }
-        div {
-          line-height: 40px;
-          border-bottom: 1px solid #ccc;
-        }
+
+        //.icon {
+        //   margin-left: 10px;
+        //   margin-right: 50px;
+        // }
+        // div {
+        //   line-height: 40px;
+        //   border-bottom: 1px solid #ccc;
+        // }
       }
 
       .introduce {
@@ -236,25 +252,38 @@ export default {
         }
       }
       .companyContent {
-        padding-top: 20px;
-        padding-left: 40px;
+        text-align: center;
         p {
           font-size: 0.9rem;
           line-height: 50px;
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
       .communityContent {
-        padding-top: 50px;
-        padding-left:50px;
+        padding-top: 20px;
         .iconBox {
-          line-height:50px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 20px;
+          transition: transform 0.3s;
           img {
             width: 30px;
             height: 30px;
+            border-radius: 7px;
+            margin-bottom: 5px;
+          }
+          p {
+          }
+          &:hover {
+            transform: translateY(-5px);
           }
         }
       }
     }
   }
 }
+
 </style>

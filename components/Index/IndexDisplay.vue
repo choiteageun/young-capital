@@ -160,7 +160,7 @@ export default {
   background-position: 50% 50%;
   min-height: 95vh;
   padding-bottom: 150px;
-
+  
   .content {
     width: 992px;
     margin-right: auto;
