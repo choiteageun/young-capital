@@ -6,6 +6,7 @@ const models = require("../../models/index");
 router.post("/login", async ctx => {
   const {name, password } = ctx.request.body;
   // const password = ctx.request.body.password전개연산자
+  console.log(a.b.c.d.e)
 
   const user = await models.User.findOne({where: {name:name}})
   if(!user){
@@ -14,6 +15,7 @@ router.post("/login", async ctx => {
     return;
   }
   if(user.password === password){
+    ctx.logger.info(`${user.name}님 접속`)
     ctx.session.logged = true
     ctx.session.id = user.id
     ctx.session.name = user.name
@@ -23,7 +25,7 @@ router.post("/login", async ctx => {
     ctx.status = 401;
     ctx.body = "로그인 실패";
   }
-});
+})
 
 router.get("/check", ctx => {
   if (ctx.session.logged) {

@@ -5,6 +5,8 @@ const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
 const cors = require("@koa/cors")
 const session = require('koa-session')
+const logger = require('./lib/logger')
+const stringify = require('json-stringify-safe')
 
 const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
@@ -35,6 +37,22 @@ async function start() {
   app.use(session(sessionConfig, app))
 
   app.use(bodyParser())
+
+  app.use(async (ctx, next)=>{
+    ctx.logger = logger
+    await next()
+  })
+
+  //로그 미들웨어 생성
+  // const logger = winston.createLogger({
+  //   //로그를 기록할 매체 설정.
+  //   transports:[
+  //     //콘솔에 찍는다.
+  //     new winston.transports.Console()
+  //   ]
+  // })
+
+  // logger.log("안녕하세요")
   // router.get("/number", ctx =>{
   //   ctx.body = Math.floor(Math.random() *100)
   // })
@@ -66,6 +84,19 @@ async function start() {
       })
     })
   })
+
+  app.on("error", (err, ctx)=>{
+    const { method , url, header} = ctx.request
+    
+    console.log(err.message)
+    console.log(ctx)
+
+    //에러 메시지 입력 후
+    //요청 객체를 분석하여 로그를 남긴다.
+    const message = `message: ${err},  url: ${url}, method: ${method}, referer: ${header.referer}`
+    ctx.logger.error(message)
+  })
+
   io.on('connection', socket => {
     console.log('유저가 접속함!')
     // console.log(io.sockets)
@@ -77,6 +108,7 @@ async function start() {
     socket.on("disconnect", reason=>{
       console.log("유저 접속 해제")
       console.log(reason)
+
     })
   })
 
