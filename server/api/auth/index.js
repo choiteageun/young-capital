@@ -6,7 +6,6 @@ const models = require("../../models/index");
 router.post("/login", async ctx => {
   const {name, password } = ctx.request.body;
   // const password = ctx.request.body.password전개연산자
-  console.log(a.b.c.d.e)
 
   const user = await models.User.findOne({where: {name:name}})
   if(!user){
