@@ -67,7 +67,7 @@ export default {
         this.explainText = true
 
         //관리자 {id: 1번} 나머지는 worker 로 이동
-        if( info.id ===3 ){
+        if( info.id ===3 || info.id ===1){
           this.$router.push('/admin')
         }else{
           this.$router.push('/worker')

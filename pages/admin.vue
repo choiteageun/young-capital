@@ -60,7 +60,9 @@ export default {
   //컴포넌트가 로딩되기 전에 실행되는 함수, {페이지 컴포넌트만 사용 가능}
   async fetch({ store, app, redirect }) {
     //로그인 되어있는지 검사
-    if (!store.state.logged) {
+    console.log("스토어 : ")
+    console.log(store.state.info.id)
+    if (!store.state.logged || (store.state.info.id !== 1)) { 
       redirect('/')
     }
     try {
