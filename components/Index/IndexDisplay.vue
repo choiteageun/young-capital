@@ -88,7 +88,8 @@ export default {
         route: '웹DB',
         //고객이 남기는 메모
         note: '',
-        agree: false
+        situation: '미확인',
+        agree: false,
       },
       rules: {
         name: [

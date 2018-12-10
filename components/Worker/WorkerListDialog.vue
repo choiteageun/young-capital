@@ -16,7 +16,7 @@
           </el-col>
           <el-col :span="8">
             <el-form-item label="승인금액">
-              <el-input v-model="consulFormData.completeAmount"></el-input>
+              <el-input disabled v-model="consulFormData.completeAmount"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -31,7 +31,7 @@
           <el-col :span="16">
             <el-form-item label="담당/접수자">
               <el-col :span="11">
-                <el-select v-model="consulFormData.manager_id" style="width:50%;">
+                <el-select disabled v-model="consulFormData.manager_id" style="width:50%;">
                   <el-option v-for="staff in 3" :key="staff" :label="staff.name" :value="staff.id"></el-option>
                 </el-select>
               </el-col>
@@ -77,12 +77,12 @@
 
           <el-col :span="8">
             <el-form-item label="이름">
-              <el-input v-model="consulFormData.name"></el-input>
+              <el-input disabled v-model="consulFormData.name"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="휴대폰번호">
-              <el-input v-model="consulFormData.tel"></el-input>
+              <el-input risabled v-model="consulFormData.tel"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="4">
@@ -90,7 +90,7 @@
           </el-col>
           <el-col :span="8">
             <el-form-item label="생년월일">
-              <el-input v-model="consulFormData.birth"></el-input>
+              <el-input disabled v-model="consulFormData.birth"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -197,7 +197,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="1차상담">
-              <el-input v-model="consulFormData.coment"></el-input>
+              <el-input disabled v-model="consulFormData.coment"></el-input>
             </el-form-item>
           </el-col>
           <el-col style="text-align:right;">
