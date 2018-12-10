@@ -62,7 +62,7 @@ export default {
     //로그인 되어있는지 검사
     console.log("스토어 : ")
     console.log(store.state.info.id)
-    if (!store.state.logged || (store.state.info.id !== 3)) {
+    if (!store.state.logged || (store.state.info.id !== 3 )) {
       redirect('/')
     }
     try {
