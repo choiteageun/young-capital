@@ -11,7 +11,7 @@
         <el-row>
           <el-col :span="8">
             <el-form-item label="신청금액">
-              <el-input disabled v-model="consulFormData.loanAmount"></el-input>
+              <el-input v-model="consulFormData.loanAmount"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -215,6 +215,7 @@
             <el-table-column>
               <el-table-column prop="createdAt" label="시간" width="150px">
                 <template slot-scope="scope">
+                  <!-- ??? -->
                   {{scope.row.createdAt | time}}
                 </template>
               </el-table-column>
@@ -258,6 +259,8 @@
 </template>
 <script>
 import axios from 'axios'
+import moment from "moment"
+
 export default {
   data() {
     return {
@@ -275,7 +278,8 @@ export default {
       consul: [],
       recordFormData: {
         id: '',
-        userId: '',
+        userId: this.$store.state.info.id,
+        userName: this.$store.state.info.name,
         consulId: '',
         reserve_contents: '',
         createdAt:'',
@@ -333,22 +337,30 @@ export default {
       required: true
     }
   },
+  filters:{
+    time(value){
+      return moment(value).format("YYYY-MM-DD HH:mm:ss")
+    }
+  },
   methods: {
     async handleClickReport() {
-      console.log("1");
-      this.recordFormData.consulId = this.consulFormData.id;
-      const res = await axios.post(
-        `/api/consultation/consulReport`,
-        {
-          data: this.recordFormData
-        }
-      )
-      console.log(this.recordFormData)
+      this.recordFormData.consulId = this.consulFormData.id
+      const res = await axios.post(`/api/consultation/consulReport`, {
+        data: this.recordFormData
+      })
+      
+      this.recordFormData.reserve_contents = ''
+      this.record.push(res.data);
     },
-    open(consul) {
+    async open(consul) {
       this.consulFormData = consul
-
       this.dialog.updateConsul = true
+
+      const res = await axios.get(
+        `/api/consultation/consulReport/${this.consulFormData.id}`,
+        {}
+      )
+      this.record = res.data;
     },
     async createUser() {
       console.log(this.createUserData)

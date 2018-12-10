@@ -315,12 +315,12 @@ export default {
   },
   methods: {
     async handleClickReport() {
-      console.log('1')
+
       this.recordFormData.consulId = this.consulFormData.id
       const res = await axios.post(`/api/consultation/consulReport`, {
         data: this.recordFormData
       })
-      console.log(this.recordFormData)
+      
       this.recordFormData.reserve_contents = ''
       this.record.push(res.data);
     },
