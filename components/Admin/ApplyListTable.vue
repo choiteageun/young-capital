@@ -122,10 +122,10 @@ export default {
     tableRowClassName({ row, rowIndex }) {
       if (row.situation === "미확인") {
         return 'warning-row'
-      } else if (row.situation === "대기중") {
+      } else if (row.situation === "진행중") {
         return 'success-row'
       }
-      return ''
+      return 'stay-row'
     },
     open(consul) {
       this.$parent.$refs.dialog.open(consul)
@@ -180,8 +180,11 @@ export default {
 </script>
 <style lang="scss">
 .warning-row{
-  background: rgb(63, 62, 62) !important;
+  background: rgb(170, 170, 170) !important;
   color:black;
+}
+.stay-row{
+  background-color:rgb(255, 231, 188) !important;
 }
 .success-row{
   background: #f0f9eb !important;;
