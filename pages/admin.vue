@@ -61,7 +61,7 @@ export default {
   async fetch({ store, app, redirect }) {
     //로그인 되어있는지 검사
     if (!store.state.logged || (store.state.info.id !== 3 )) {
-      redirect('/')
+      redirect('/') 
     }
     try {
       const data = await app.$axios.$get('/api/consultation')

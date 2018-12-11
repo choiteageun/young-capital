@@ -275,8 +275,6 @@ export default {
             border-radius: 7px;
             margin-bottom: 5px;
           }
-          p {
-          }
           &:hover {
             transform: translateY(-5px);
           }
