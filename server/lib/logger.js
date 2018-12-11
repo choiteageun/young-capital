@@ -33,6 +33,7 @@ const logger = winston.createLogger({
   exitOnError: false,
   //로그를 기록할 매체 설정
   transports: [
+    
     //콘솔에다 찍겠다
     new winston.transports.Console(),
     new winstonDailyRotateFile({
