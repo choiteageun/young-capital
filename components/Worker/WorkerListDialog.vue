@@ -487,8 +487,9 @@ export default {
   },
   methods: {
     async handleClickReport() {
+      console.log(this.clientIp)
       const text = this.recordFormData.reserve_contents
-      
+
       if (text) {
         this.recordFormData.consulId = this.consulFormData.id
         const res = await axios.post(`/api/consultation/consulReport`, {

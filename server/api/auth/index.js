@@ -15,7 +15,7 @@ router.post("/login", async ctx => {
     return;
   }
   if(user.password === password){
-    ctx.logger.info(`${user.name}님 접속, ip: ${ip.address()}`)
+    ctx.logger.info(`${user.name}님 접속, ip: ${ctx.request.ip}`)
     ctx.session.logged = true
     ctx.session.id = user.id
     ctx.session.name = user.name
