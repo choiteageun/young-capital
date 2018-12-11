@@ -11,30 +11,54 @@
         </div> -->
     <div class="allContent">
       <div class="loginBox">
-        <el-form @submit.native.prevent="handleAdminSubmit" label-width="80px">
+        <el-form
+          @submit.native.prevent="handleAdminSubmit"
+          label-width="80px"
+        >
           <div class="loginTitle">
             <h1>Admin Login</h1>
           </div>
           <div class="loginIdBox">
             <el-form-item label="아이디">
-              <el-select v-model="adminName" style="width:250px;">
-                <el-option v-for="staff in adminNames" :key="staff.id" :label="staff.name" :value="staff.name"></el-option>
+              <el-select
+                v-model="adminName"
+                style="width:250px;"
+              >
+                <el-option
+                  v-for="staff in adminNames"
+                  :key="staff.id"
+                  :label="staff.name"
+                  :value="staff.name"
+                ></el-option>
               </el-select>
             </el-form-item>
           </div>
           <div class="loginPwBox">
             <el-form-item label="비밀번호">
-              <el-input type="password" v-model="adminPassword" style="width:250px;"></el-input>
+              <el-input
+                type="password"
+                v-model="adminPassword"
+                style="width:250px;"
+              ></el-input>
             </el-form-item>
           </div>
           <div class="transitionText">
-            <p class="explainText" v-show="explainText">관리자 정보를 입력한 후 비밀번호를 입력해주세요</p>
+            <p
+              class="explainText"
+              v-show="explainText"
+            >관리자 정보를 입력한 후 비밀번호를 입력해주세요</p>
             <transition>
-              <p class="danger" v-show="wrongPassword">관리자 정보가 정확하지 않습니다.</p>
+              <p
+                class="danger"
+                v-show="wrongPassword"
+              >관리자 정보가 정확하지 않습니다.</p>
             </transition>
           </div>
           <div class="loginBoxFooter">
-            <el-button type="primary" native-type="submit">로그인</el-button>
+            <el-button
+              type="primary"
+              native-type="submit"
+            >로그인</el-button>
           </div>
         </el-form>
       </div>
@@ -46,18 +70,19 @@ import axios from 'axios'
 import ip from 'ip'
 
 export default {
-  layout:'empty',
+  layout: 'empty',
   data() {
     return {
       adminName: '',
       adminNames: [],
       adminPassword: '',
       wrongPassword: false,
-      explainText: true,
+      explainText: true
     }
   },
   methods: {
     async handleAdminSubmit() {
+      console.log(ip.address())
       try {
         const info = await this.$axios.$post('/api/auth/login', {
           password: this.adminPassword,
@@ -69,9 +94,9 @@ export default {
         this.explainText = true
 
         //관리자 {id: 1번} 나머지는 worker 로 이동
-        if( info.id ===3){
+        if (info.id === 3) {
           this.$router.push('/admin')
-        }else{
+        } else {
           this.$router.push('/worker')
         }
       } catch (e) {
@@ -81,7 +106,6 @@ export default {
     }
   },
   async mounted() {
-    console.log(ip.address())
     const data = await this.$axios.$get('/api/user')
     this.adminNames = data
   }
@@ -126,16 +150,16 @@ export default {
       width: 80%;
     }
   }
-  .transitionText{
-    width:100%;
-    height:50px;
+  .transitionText {
+    width: 100%;
+    height: 50px;
     text-align: center;
-    .explainText{
-      color:#ccc;
+    .explainText {
+      color: #ccc;
     }
-    .danger{
-      font-weight:700;
-      color:red;
+    .danger {
+      font-weight: 700;
+      color: red;
     }
   }
 }

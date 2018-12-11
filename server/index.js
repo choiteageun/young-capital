@@ -3,7 +3,7 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
-const cors = require("@koa/cors")
+const cors = require('@koa/cors')
 const session = require('koa-session')
 const logger = require('./lib/logger')
 const stringify = require('json-stringify-safe')
@@ -38,7 +38,7 @@ async function start() {
 
   app.use(bodyParser())
 
-  app.use(async (ctx, next)=>{
+  app.use(async (ctx, next) => {
     ctx.logger = logger
     await next()
   })
@@ -77,7 +77,7 @@ async function start() {
     return new Promise((resolve, reject) => {
       ctx.res.on('close', resolve)
       ctx.res.on('finish', resolve)
-      ctx.req.ctx= ctx
+      ctx.req.ctx = ctx
       nuxt.render(ctx.req, ctx.res, promise => {
         // nuxt.render passes a rejected promise into callback on error.
         promise.then(resolve).catch(reject)
@@ -85,15 +85,17 @@ async function start() {
     })
   })
 
-  app.on("error", (err, ctx)=>{
-    const { method , url, header} = ctx.request
-    
+  app.on('error', (err, ctx) => {
+    const { method, url, header } = ctx.request
+
     console.log(err.message)
     console.log(ctx)
 
     //에러 메시지 입력 후
     //요청 객체를 분석하여 로그를 남긴다.
-    const message = `message: ${err},  url: ${url}, method: ${method}, referer: ${header.referer}`
+    const message = `message: ${err},  url: ${url}, method: ${method}, referer: ${
+      header.referer
+    }`
     ctx.logger.error(message)
   })
 
