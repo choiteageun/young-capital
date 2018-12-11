@@ -43,6 +43,8 @@
 </template>
 <script>
 import axios from 'axios'
+import ip from 'ip'
+
 export default {
   layout:'empty',
   data() {
@@ -79,6 +81,7 @@ export default {
     }
   },
   async mounted() {
+    console.log(ip.address())
     const data = await this.$axios.$get('/api/user')
     this.adminNames = data
   }
