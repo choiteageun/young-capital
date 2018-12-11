@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     async handleAdminSubmit() {
-      console.log(ip)
+      console.log(ip.address())
       try {
         const info = await this.$axios.$post('/api/auth/login', {
           password: this.adminPassword,
