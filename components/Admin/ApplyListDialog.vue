@@ -344,13 +344,23 @@ export default {
   },
   methods: {
     async handleClickReport() {
-      this.recordFormData.consulId = this.consulFormData.id
-      const res = await axios.post(`/api/consultation/consulReport`, {
-        data: this.recordFormData
-      })
-      
-      this.recordFormData.reserve_contents = ''
-      this.record.push(res.data);
+      const text = this.recordFormData.reserve_contents
+
+      if (text) {
+        this.recordFormData.consulId = this.consulFormData.id
+        const res = await axios.post(`/api/consultation/consulReport`, {
+          data: this.recordFormData
+        })
+
+        this.recordFormData.reserve_contents = ''
+        this.record.push(res.data)
+      } else {
+        this.$notify({
+          title: '입력 오류',
+          message: `내용을 입력해주세요.`,
+          duration: 800
+        })
+      }
     },
     async open(consul) {
       this.consulFormData = consul
