@@ -415,6 +415,7 @@ export default {
     return {
       route: '웹',
       selected: '',
+      clientIp: this.$store.state.info.ip,
       memo: [
         {
           time: '2016-03-21 10:30:23',
@@ -487,7 +488,7 @@ export default {
   methods: {
     async handleClickReport() {
       const text = this.recordFormData.reserve_contents
-
+      
       if (text) {
         this.recordFormData.consulId = this.consulFormData.id
         const res = await axios.post(`/api/consultation/consulReport`, {
@@ -536,8 +537,6 @@ export default {
       })
 
       this.consulFormDialog = false
-
-      console.log(res)
     }
   },
   async mounted() {

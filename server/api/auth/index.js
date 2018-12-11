@@ -2,6 +2,7 @@ const Router = require("koa-router")
 
 const router = new Router();
 const models = require("../../models/index");
+const ip = require('ip')
 
 router.post("/login", async ctx => {
   const {name, password } = ctx.request.body;
@@ -15,9 +16,11 @@ router.post("/login", async ctx => {
   }
   if(user.password === password){
     ctx.logger.info(`${user.name}님 접속`)
+    ctx.logger.info(`ip: ${ip.address()}`)
     ctx.session.logged = true
     ctx.session.id = user.id
     ctx.session.name = user.name
+    ctx.session.ip = ip.address()
     ctx.status = 200
     ctx.body = ctx.session
   }else{

@@ -5,7 +5,8 @@ const store = () => new Vuex.Store({
   state :{
     info:{
       id: 0,
-      name: ''
+      name: '',
+      ip:''
     },
 
     logged: false,
@@ -23,6 +24,7 @@ const store = () => new Vuex.Store({
       state.logged= true,
       state.info.id = info.id
       state.info.name = info.name
+      state.info.ip = info.ip
     },
 
     logout(state){

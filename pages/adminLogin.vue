@@ -77,12 +77,12 @@ export default {
       adminNames: [],
       adminPassword: '',
       wrongPassword: false,
-      explainText: true
+      explainText: true,
+      clientIp: this.$store.state.info.ip,
     }
   },
   methods: {
     async handleAdminSubmit() {
-      console.log(ip.address())
       try {
         const info = await this.$axios.$post('/api/auth/login', {
           password: this.adminPassword,
