@@ -67,7 +67,7 @@
 </template>
 <script>
 import axios from 'axios'
-import ip from 'ip'
+import requestIp from 'request-ip'
 
 export default {
   layout: 'empty',

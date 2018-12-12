@@ -8,6 +8,8 @@ const session = require('koa-session')
 const logger = require('./lib/logger')
 const stringify = require('json-stringify-safe')
 
+const requestIp = require('request-ip');
+
 const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
@@ -37,12 +39,13 @@ async function start() {
   app.use(session(sessionConfig, app))
 
   app.use(bodyParser())
+  
 
   app.use(async (ctx, next) => {
     ctx.logger = logger
     await next()
   })
-
+  
   //로그 미들웨어 생성
   // const logger = winston.createLogger({
   //   //로그를 기록할 매체 설정.
@@ -73,6 +76,8 @@ async function start() {
 
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
+    const clientIp = requestIp.getClientIp(ctx.req);
+    console.log(clientIp)
 
     return new Promise((resolve, reject) => {
       ctx.res.on('close', resolve)
@@ -87,7 +92,6 @@ async function start() {
 
   app.on('error', (err, ctx) => {
     const { method, url, header } = ctx.request
-
     console.log(err.message)
     console.log(ctx)
 
