@@ -86,7 +86,7 @@ async function start() {
       external: getMb(external) + 'MB'
     }
 
-    logger.info( memmoryObject)
+    logger.info( memoryObject)
   })
   job.start()
 
