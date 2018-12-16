@@ -67,6 +67,7 @@ async function start() {
   // }))
 
   //IP : 이용가능하게 등록
+  app.proxy = true 
   app.use(c2k(requestIp.mw()))
 
   const api = require('./api/index')
