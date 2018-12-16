@@ -76,7 +76,7 @@ async function start() {
 
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
-    const clientIp = requestIp.getClientIp(ctx.req);
+    const clientIp = requestIp.getClientIp(ctx.request);
     console.log(clientIp)
 
     return new Promise((resolve, reject) => {
