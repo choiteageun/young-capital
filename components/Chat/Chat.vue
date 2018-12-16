@@ -26,6 +26,7 @@
 import socket from "@/plugins/socket.io.js";
 
 export default {
+  name:"Chat",
   data() {
     return {
       visible: false,

@@ -31,14 +31,14 @@ p{
   margin-left: auto;
 }
 
-.page-enter-active, .page-leave-active
+/* .page-enter-active, .page-leave-active
 {
   transition: opacity .5s
 }
 .page-enter, .page-leave-active
 {
   opacity: 0
-}
+} */
 
 .center{
   text-align: center;

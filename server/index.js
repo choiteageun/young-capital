@@ -7,6 +7,7 @@ const cors = require('@koa/cors')
 const session = require('koa-session')
 const logger = require('./lib/logger')
 const stringify = require('json-stringify-safe')
+const { CronJob } = require('cron')
 
 const c2k = require('koa-connect')
 const requestIp = require('request-ip');
@@ -70,6 +71,25 @@ async function start() {
   app.proxy = true 
   app.use(c2k(requestIp.mw()))
 
+  //주기석으로 프로세스 메모리점검
+  const job = new CronJob(" 0 * * * * * ", function(){
+    const {rss, heapTotal, heapUsed, external } = process.memoryUsage()
+
+    const getMb =  bytes => Math.floor(bytes / (1024* 1024))
+
+    
+    //프로세스 메모리를 콘솔로 찍어본다.
+    const memoryObject = {
+      total: getMb(rss) + 'MB',
+      heapTotal: getMb(heapTotal) + 'MB',
+      heapUsed: getMb(heapUsed) + 'MB',
+      external: getMb(external) + 'MB'
+    }
+
+    logger.info( memmoryObject)
+  })
+  job.start()
+
   const api = require('./api/index')
   const router = new Router()
 
@@ -81,8 +101,6 @@ async function start() {
 
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
-    console.log(ctx.req)
-    console.log(ctx.req.clientIp)
 
     return new Promise((resolve, reject) => {
       ctx.res.on('close', resolve)
@@ -98,7 +116,6 @@ async function start() {
   app.on('error', (err, ctx) => {
     const { method, url, header } = ctx.request
     console.log(err.message)
-    console.log(ctx)
 
     //에러 메시지 입력 후
     //요청 객체를 분석하여 로그를 남긴다.
@@ -108,20 +125,20 @@ async function start() {
     ctx.logger.error(message)
   })
 
-  // io.on('connection', socket => {
-  //   console.log('유저가 접속함!')
-  //   // console.log(io.sockets)
+  io.on('connection', socket => {
+    console.log('유저가 접속함!')
+    // console.log(io.sockets)
 
-  //   socket.on('chat', chat => {
-  //     io.emit('chat', chat)
-  //   })
+    socket.on('chat', chat => {
+      io.emit('chat', chat)
+    })
 
-  //   socket.on("disconnect", reason=>{
-  //     console.log("유저 접속 해제")
-  //     console.log(reason)
+    socket.on("disconnect", reason=>{
+      console.log("유저 접속 해제")
+      console.log(reason)
 
-  //   })
-  // })
+    })
+  })
 
   http.listen(port)
   consola.ready({
