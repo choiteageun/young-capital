@@ -8,6 +8,7 @@ const session = require('koa-session')
 const logger = require('./lib/logger')
 const stringify = require('json-stringify-safe')
 
+const c2k = require('koa-connect')
 const requestIp = require('request-ip');
 
 const app = new Koa()
@@ -65,6 +66,9 @@ async function start() {
   //   origin: "http://www.numberoneloan.com"
   // }))
 
+  //IP : 이용가능하게 등록
+  app.use(c2k(requestIp.mw()))
+
   const api = require('./api/index')
   const router = new Router()
 
@@ -76,8 +80,8 @@ async function start() {
 
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
-    const clientIp = requestIp.getClientIp(ctx.request);
-    console.log(clientIp)
+    console.log(ctx.req)
+    console.log(ctx.req.clientIp)
 
     return new Promise((resolve, reject) => {
       ctx.res.on('close', resolve)
