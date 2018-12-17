@@ -125,20 +125,20 @@ async function start() {
     ctx.logger.error(message)
   })
 
-  io.on('connection', socket => {
-    console.log('유저가 접속함!')
-    // console.log(io.sockets)
+  // io.on('connection', socket => {
+  //   console.log('유저가 접속함!')
+  //   // console.log(io.sockets)
 
-    socket.on('chat', chat => {
-      io.emit('chat', chat)
-    })
+  //   socket.on('chat', chat => {
+  //     io.emit('chat', chat)
+  //   })
 
-    socket.on("disconnect", reason=>{
-      console.log("유저 접속 해제")
-      console.log(reason)
+  //   socket.on("disconnect", reason=>{
+  //     console.log("유저 접속 해제")
+  //     console.log(reason)
 
-    })
-  })
+  //   })
+  // })
 
   http.listen(port)
   consola.ready({
