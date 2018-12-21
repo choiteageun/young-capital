@@ -136,7 +136,6 @@ async function start() {
     socket.on("disconnect", reason=>{
       console.log("유저 접속 해제")
       console.log(reason)
-
     })
   })
 
